@@ -6,23 +6,23 @@
 
 CREATE TABLE Menu (
 	id_menu VARCHAR(4) PRIMARY KEY,
-	precio NUMBER(5,2) CONSTRAINT precio_no_nulo NOT NULL CONSTRAINT precio_mayor_0 CHECK (precio >= 0),
-	disponibilidad VARCHAR(2) CONSTRAINT disponibilidad_no_nula NOT NULL 
-														CONSTRAINT disponibilidad_si_no CHECK (disponibilidad IN ('SI', 'NO'))
+	precio NUMBER(5,2) CONSTRAINT precio_no_nulo NOT NULL CONSTRAINT precio_mayor_igual_0 CHECK (precio >= 0),
+	disponibilidad VARCHAR(2) CONSTRAINT disponibilidad_no_nula NOT NULL
+							  CONSTRAINT disponibilidad_si_no CHECK (disponibilidad IN ('SI', 'NO'))
 );
 
 CREATE TABLE Plato (
 	cod_plato VARCHAR(4) PRIMARY KEY,
 	nombre VARCHAR(25) CONSTRAINT nombre_no_nulo NOT NULL,
-	precio NUMBER(5,2) CONSTRAINT precio_no_nulo NOT NULL CONSTRAINT precio_mayor_0 CHECK (precio >= 0),
+	precio NUMBER(5,2) CONSTRAINT precio_no_nulo NOT NULL CONSTRAINT precio_mayor_igual_0 CHECK (precio >= 0),
 	productos_alergenos VARCHAR(50) CONSTRAINT alergenos_no_nulo NOT NULL,
-	disponibilidad VARCHAR(2) CONSTRAINT disponibilidad_no_nula NOT NULL 
-														CONSTRAINT disponibilidad_si_no CHECK (disponibilidad IN ('SI', 'NO'))
+	disponibilidad VARCHAR(2) CONSTRAINT disponibilidad_no_nula NOT NULL
+							  CONSTRAINT disponibilidad_si_no CHECK (disponibilidad IN ('SI', 'NO'))
 );
 
 -- Subsistema Gestion de Proveedores
 
------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
 
 -- Poner las tablas correspondientes a relaciones aqui
 
