@@ -22,6 +22,22 @@ CREATE TABLE Plato (
 
 -- Subsistema Gestion de Proveedores
 
+CREATE TABLE Proveedor(
+dni varchar(9), nombre_apellidos varchar(60) CONSTRAINT nombre_no_nulo NOT NULL, 
+telefono varchar(20) CONSTRAINT telefono_no_nulo NOT NULL, 
+correo varchar(60), nombre_empresa varchar(60) CONSTRAINT empresa_no_nula NOT NULL, 
+nif_empresa varchar(9) CONSTRAINT nif_empresa_no_nulo NOT NULL,
+tipo_producto varchar(20) CONSTRAINT tipo_producto_no_nulo NOT NULL,
+PRIMARY KEY(dni));
+
+
+CREATE TABLE Ingrediente(
+cod_ing int(5), tipo varchar(20) CONSTRAINT tipo_ingrediente_no_nulo NOT NULL, 
+nombre varchar(25) CONSTRAINT nombre_ingrediente_no_nulo NOT NULL, 
+cantidad integer(3) CONSTRAINT cantidad_mayor_a_1 NOT NULL,
+PRIMARY KEY(cod_ing),
+CHECK(1 <= cantidad <= 500));
+
 ----------------------------------------------------------------------------------------------------------------
 
 -- Poner las tablas correspondientes a relaciones aqui
@@ -41,3 +57,9 @@ CREATE TABLE plato_contiene_ing (
 	FOREIGN KEY(cod_plato, cod_ing)
 	REFERENCES Plato(cod_plato), Ingrediente(cod_ing)
 );
+
+CREATE TABLE provee(
+dni_prov varchar(9), cod_ing int(5),
+PRIMARY KEY(dni_prov, cod_ing)
+FOREIGN KEY(dni_prov, cod_ing)
+REFERENCES Proveedor(dni_prov), Ingredientes(cod_ing));
