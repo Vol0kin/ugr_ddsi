@@ -2,6 +2,24 @@
 
 -- Subsistema Gestion de Empleados
 
+CREATE TABLE Empleado (
+	dni_emp VARCHAR(9) PRIMARY KEY,
+	nombre_apellidos VARCHAR(60) NOT NULL,
+	fecha_nac DATE NOT NULL,
+	telefono VARCHAR(20) NOT NULL,
+	direccion VARCHAR(120) NOT NULL,
+	estadocivil VARCHAR(10) NOT NULL
+		CHECK (estadocivil IN ('soltero', 'casado', 'divorciado', 'viudo')),
+	correo VARCHAR(60) NOT NULL,
+	formacion VARCHAR(200) NOT NULL,
+	cuenta_bancaria VARCHAR(20) NOT NULL,
+	ss VARCHAR(12) NOT NULL
+);
+
+CREATE TABLE Tarea(
+	nom_ta VARCHAR(50) PRIMARY KEY	
+);
+
 -- Subsistema Gestion de Menus
 
 CREATE TABLE Menu (
@@ -62,4 +80,11 @@ CREATE TABLE provee(
 dni_prov varchar(9), cod_ing int(5),
 PRIMARY KEY(dni_prov, cod_ing)
 FOREIGN KEY(dni_prov, cod_ing)
-REFERENCES Proveedor(dni_prov), Ingredientes(cod_ing));
+REFERENCES Proveedor(dni_prov), Ingredientes(cod_ing)
+);
+
+CREATE TABLE asignacion(
+	dni_emp VARCHAR(9) REFERENCES Empleado(dni_emp),
+	nom_ta VARCHAR(50) REFERENCES Tarea(nom_ta),
+	PRIMARY KEY (dni_emp, nom_ta)
+);
