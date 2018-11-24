@@ -10,77 +10,72 @@ CREATE TABLE Empleado (
 	direccion VARCHAR(120) NOT NULL,
 	estadocivil VARCHAR(10) NOT NULL
 		CHECK (estadocivil IN ('soltero', 'casado', 'divorciado', 'viudo')),
-	correo VARCHAR(60) NOT NULL,
+	correo VARCHAR(60),
 	formacion VARCHAR(200) NOT NULL,
 	cuenta_bancaria VARCHAR(20) NOT NULL,
 	ss VARCHAR(12) NOT NULL
 );
 
 CREATE TABLE Tarea(
-	nom_ta VARCHAR(50) PRIMARY KEY	
+	nom_ta VARCHAR(50) PRIMARY KEY
 );
 
 -- Subsistema Gestion de Menus
 
 CREATE TABLE Menu (
 	id_menu VARCHAR(4) PRIMARY KEY,
-	precio NUMBER(5,2) CONSTRAINT precio_no_nulo NOT NULL CONSTRAINT precio_mayor_igual_0 CHECK (precio >= 0),
-	disponibilidad VARCHAR(2) CONSTRAINT disponibilidad_no_nula NOT NULL
-							  CONSTRAINT disponibilidad_si_no CHECK (disponibilidad IN ('SI', 'NO'))
+	precio FLOAT(5,2) NOT NULL CHECK (precio >= 0),
+	disponibilidad VARCHAR(2) NOT NULL CHECK (disponibilidad IN ('SI', 'NO'))
 );
 
 CREATE TABLE Plato (
 	cod_plato VARCHAR(4) PRIMARY KEY,
-	nombre VARCHAR(25) CONSTRAINT nombre_no_nulo NOT NULL,
-	precio NUMBER(5,2) CONSTRAINT precio_no_nulo NOT NULL CONSTRAINT precio_mayor_igual_0 CHECK (precio >= 0),
-	productos_alergenos VARCHAR(50) CONSTRAINT alergenos_no_nulo NOT NULL,
-	disponibilidad VARCHAR(2) CONSTRAINT disponibilidad_no_nula NOT NULL
-							  CONSTRAINT disponibilidad_si_no CHECK (disponibilidad IN ('SI', 'NO'))
+	nombre VARCHAR(25) NOT NULL,
+	precio FLOAT(5,2) NOT NULL CHECK (precio >= 0),
+	productos_alergenos VARCHAR(50) NOT NULL,
+	disponibilidad VARCHAR(2) NOT NULL CHECK (disponibilidad IN ('SI', 'NO'))
 );
 
 -- Subsistema Gestion de Proveedores
 
 CREATE TABLE Proveedor(
-dni varchar(9), nombre_apellidos varchar(60) CONSTRAINT nombre_no_nulo NOT NULL, 
-telefono varchar(20) CONSTRAINT telefono_no_nulo NOT NULL, 
-correo varchar(60), nombre_empresa varchar(60) CONSTRAINT empresa_no_nula NOT NULL, 
-nif_empresa varchar(9) CONSTRAINT nif_empresa_no_nulo NOT NULL,
-tipo_producto varchar(20) CONSTRAINT tipo_producto_no_nulo NOT NULL,
-PRIMARY KEY(dni));
+	dni varchar(9) PRIMARY KEY,
+	nombre_apellidos varchar(60) NOT NULL,
+	telefono varchar(20) NOT NULL,
+	correo varchar(60),
+	nombre_empresa varchar(60) NOT NULL,
+	nif_empresa varchar(9) NOT NULL,
+	tipo_producto varchar(20) NOT NULL
+);
 
 
 CREATE TABLE Ingrediente(
-cod_ing int(5), tipo varchar(20) CONSTRAINT tipo_ingrediente_no_nulo NOT NULL, 
-nombre varchar(25) CONSTRAINT nombre_ingrediente_no_nulo NOT NULL, 
-cantidad integer(3) CONSTRAINT cantidad_mayor_a_1 NOT NULL,
-PRIMARY KEY(cod_ing),
-CHECK(1 <= cantidad <= 500));
+	cod_ing varchar(5) PRIMARY KEY,
+	tipo varchar(20) NOT NULL,
+	nombre varchar(25) NOT NULL,
+	cantidad integer(3) NOT NULL CHECK(1 <= cantidad <= 500)
+);
 
-----------------------------------------------------------------------------------------------------------------
+-- --------------------------------------------------------------------------------------------------------------
 
 -- Poner las tablas correspondientes a relaciones aqui
 
 CREATE TABLE menu_contiene_plato (
-	id_menu VARCHAR(4),
-	cod_plato VARCHAR(4),
-	PRIMARY KEY(id_menu, cod_plato),
-	FOREIGN KEY(id_menu, cod_plato)
-	REFERENCES Menu(id_menu), Plato(cod_plato)
+	id_menu VARCHAR(4) REFERENCES Menu(id_menu),
+	cod_plato VARCHAR(4) REFERENCES Plato(cod_plato),
+	PRIMARY KEY(id_menu, cod_plato)
 );
 
 CREATE TABLE plato_contiene_ing (
-	cod_plato VARCHAR(4),
-	cod_ing INTEGER,
-	PRIMARY KEY(cod_plato, cod_ing),
-	FOREIGN KEY(cod_plato, cod_ing)
-	REFERENCES Plato(cod_plato), Ingrediente(cod_ing)
+	cod_plato VARCHAR(4) REFERENCES Plato(cod_plato),
+	cod_ing varchar(5) REFERENCES Ingrediente(cod_ing),
+	PRIMARY KEY(cod_plato, cod_ing)
 );
 
 CREATE TABLE provee(
-dni_prov varchar(9), cod_ing int(5),
-PRIMARY KEY(dni_prov, cod_ing)
-FOREIGN KEY(dni_prov, cod_ing)
-REFERENCES Proveedor(dni_prov), Ingredientes(cod_ing)
+	dni_prov varchar(9) REFERENCES Proveedor(dni_prov),
+	cod_ing varchar(5) REFERENCES Ingrediente(cod_ing),
+	PRIMARY KEY(dni_prov, cod_ing)
 );
 
 CREATE TABLE asignacion(
