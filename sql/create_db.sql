@@ -1,5 +1,3 @@
--- Poner las tablas correspondientes a entidades aqui
-
 -- Subsistema Gestion de Empleados
 
 CREATE TABLE Empleado (
@@ -45,7 +43,8 @@ CREATE TABLE Proveedor(
 	correo varchar(60),
 	nombre_empresa varchar(60) NOT NULL,
 	nif_empresa varchar(9) NOT NULL,
-	tipo_producto varchar(20) NOT NULL
+	tipo_producto varchar(20) NOT NULL,
+	edad INT NOT NULL
 );
 
 
@@ -57,8 +56,6 @@ CREATE TABLE Ingrediente(
 );
 
 -- --------------------------------------------------------------------------------------------------------------
-
--- Poner las tablas correspondientes a relaciones aqui
 
 CREATE TABLE menu_contiene_plato (
 	id_menu VARCHAR(4) REFERENCES Menu(id_menu),
