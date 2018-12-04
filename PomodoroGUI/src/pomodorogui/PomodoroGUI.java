@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.awt.*;
+import javax.swing.JComboBox;
 import javax.swing.JDesktopPane;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
@@ -157,18 +158,24 @@ public class PomodoroGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonEliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarEmpleadoActionPerformed
-        JOptionPane.showInputDialog(this, "Introduce el DNI del empleado");
+        String dni_emp = "", salida = "";
+        dni_emp = JOptionPane.showInputDialog(this, "Introduce el DNI del empleado");
+        salida = pomDB.eliminarEmpleado(dni_emp);
+        JOptionPane.showMessageDialog(this, salida);        
     }//GEN-LAST:event_botonEliminarEmpleadoActionPerformed
 
     private void botonMostrarBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarBDActionPerformed
-        String db = null;
+        String db = "", tabla = "";
+        String[] options = {"Empleado", "Tarea", "Menu", "Plato", "Proveedor", "Ingrediente",
+                          "menu_contiene_plato", "plato_contiene_ing", "provee", "asignacion"};
+        tabla = (String) JOptionPane.showInputDialog(null,"Selecciona una tabla", "Tablas...",
+                                            JOptionPane.QUESTION_MESSAGE,null,options, options[0]);
         try {
-            db = pomDB.mostrarEmpleados();
+            db = pomDB.mostrarTabla(tabla);
+            JOptionPane.showMessageDialog(this, db);
         } catch (SQLException ex) {
-            Logger.getLogger(PomodoroGUI.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "La tabla que has introducido no existe");
         }
-        
-        JOptionPane.showMessageDialog(this, db);
     }//GEN-LAST:event_botonMostrarBDActionPerformed
 
     /**
