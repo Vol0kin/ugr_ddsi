@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+import net.proteanit.sql.DbUtils;
 
 class PomodoroDB{
     Connection con;
@@ -26,19 +28,15 @@ class PomodoroDB{
         }catch(Exception e){ System.out.println(e);}  
     }
     
-    public String mostrarTabla(String tabla) throws SQLException{
+    public void mostrarTabla(String tabla) throws SQLException{
         rs=stmt.executeQuery("select * from "+tabla);
-        String s = "";
         
-            while(rs.next()){
-                for (int i=1; i<=rs.getMetaData().getColumnCount(); i++)
-                    s += rs.getString(i) + " | ";
-                s+="\n";
-            }
-        if ("".equals(s))
-            s = "La tabla está vacía";
+        Tablas tablaMostrar = new Tablas();
+        tablaMostrar.setVisible(true);
         
-        return s;
+        TableModel model = DbUtils.resultSetToTableModel(rs);
+        tablaMostrar.jLabel1.setText("Contenido de la tabla "+tabla);
+        tablaMostrar.jTable1.setModel(model); 
     }
     
     public String eliminarEmpleado(String dni) throws SQLException{

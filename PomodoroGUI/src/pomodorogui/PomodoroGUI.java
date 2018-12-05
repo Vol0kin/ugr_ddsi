@@ -141,9 +141,9 @@ public class PomodoroGUI extends javax.swing.JFrame {
                         .addComponent(botonMostrarBD, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(botonInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -185,8 +185,7 @@ public class PomodoroGUI extends javax.swing.JFrame {
         tabla = (String) JOptionPane.showInputDialog(null,"Selecciona una tabla", "Tablas...",
                                             JOptionPane.QUESTION_MESSAGE,null,options, options[0]);
         try {
-            db = pomDB.mostrarTabla(tabla);
-            JOptionPane.showMessageDialog(this, db);
+            pomDB.mostrarTabla(tabla);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "La tabla que has introducido no existe");
         }
