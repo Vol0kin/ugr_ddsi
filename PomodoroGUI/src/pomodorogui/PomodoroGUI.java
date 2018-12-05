@@ -45,6 +45,7 @@ public class PomodoroGUI extends javax.swing.JFrame {
         botonIncluirProveedor = new javax.swing.JButton();
         botonMostrarBD = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
+        botonInsertar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,6 +89,13 @@ public class PomodoroGUI extends javax.swing.JFrame {
             }
         });
 
+        botonInsertar.setText("Insertar en la Base de Datos");
+        botonInsertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonInsertarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,7 +117,11 @@ public class PomodoroGUI extends javax.swing.JFrame {
                         .addGap(59, 59, 59))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(107, 107, 107))))
+                        .addGap(101, 101, 101))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(135, 135, 135)
+                .addComponent(botonInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,19 +133,17 @@ public class PomodoroGUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(botonEliminarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(botonEliminarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(botonEliminarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonIncluirProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(103, 103, 103)
-                        .addComponent(botonMostrarBD, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botonMostrarBD, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(botonIncluirProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(104, 104, 104))))
+                        .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(botonInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
         );
 
         pack();
@@ -160,7 +170,11 @@ public class PomodoroGUI extends javax.swing.JFrame {
     private void botonEliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarEmpleadoActionPerformed
         String dni_emp = "", salida = "";
         dni_emp = JOptionPane.showInputDialog(this, "Introduce el DNI del empleado");
-        salida = pomDB.eliminarEmpleado(dni_emp);
+        try {
+            salida = pomDB.eliminarEmpleado(dni_emp);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error al eliminar el empleado");
+        }
         JOptionPane.showMessageDialog(this, salida);        
     }//GEN-LAST:event_botonEliminarEmpleadoActionPerformed
 
@@ -177,6 +191,20 @@ public class PomodoroGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "La tabla que has introducido no existe");
         }
     }//GEN-LAST:event_botonMostrarBDActionPerformed
+
+    private void botonInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInsertarActionPerformed
+        String db = "", tabla = "";
+        String[] options = {"Empleado", "Tarea", "Menu", "Plato", "Proveedor", "Ingrediente",
+                          "menu_contiene_plato", "plato_contiene_ing", "provee", "asignacion"};
+        tabla = (String) JOptionPane.showInputDialog(null,"Selecciona una tabla", "Tablas...",
+                                            JOptionPane.QUESTION_MESSAGE,null,options, options[0]);
+        try {
+            db = pomDB.insertarTabla(tabla);
+            JOptionPane.showMessageDialog(this, db);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "La tabla que has introducido no existe");
+        }
+    }//GEN-LAST:event_botonInsertarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,6 +248,7 @@ public class PomodoroGUI extends javax.swing.JFrame {
     private javax.swing.JButton botonEliminarEmpleado;
     private javax.swing.JButton botonEliminarPlato;
     private javax.swing.JButton botonIncluirProveedor;
+    private javax.swing.JButton botonInsertar;
     private javax.swing.JButton botonMostrarBD;
     private javax.swing.JButton botonSalir;
     private javax.swing.JLabel jLabel1;
