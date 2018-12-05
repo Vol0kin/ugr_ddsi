@@ -16,6 +16,7 @@ public class Tablas extends javax.swing.JFrame {
      */
     public Tablas() {
         initComponents();
+        setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -52,6 +53,7 @@ public class Tablas extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         botonSalir.setText("OK");
+        botonSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSalirActionPerformed(evt);

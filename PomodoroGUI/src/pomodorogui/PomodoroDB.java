@@ -17,6 +17,7 @@ class PomodoroDB{
     public void PomodoroDB(){  
     }
     
+    
     public void crearConexion(){
         try{  
             Class.forName("com.mysql.jdbc.Driver");  
@@ -27,6 +28,7 @@ class PomodoroDB{
               
         }catch(Exception e){ System.out.println(e);}  
     }
+    
     
     public void mostrarTabla(String tabla) throws SQLException{
         rs=stmt.executeQuery("select * from "+tabla);
@@ -39,24 +41,7 @@ class PomodoroDB{
         tablaMostrar.jTable1.setModel(model); 
     }
     
-    public String eliminarEmpleado(String dni) throws SQLException{
-        String salida = "";
-        
-        rs=stmt.executeQuery("select dni_emp from Empleado where dni_emp=\""+dni+"\"");
-        rs.next();
-                
-        try {
-            rs.getString(1);
-            salida = "El empleado con DNI "+dni+" se ha eliminado correctamente";
-            stmt.executeUpdate("delete from Empleado where dni_emp=\""+dni+"\"");
-        } catch (SQLException ex) {
-            salida = "No se ha encontrado el empleado con DNI "+dni;
-        }
-        
-        return salida;
-        
-    }
-    
+   
     public String insertarTabla(String tabla) throws SQLException{
         String valores = "", salida = "", a_insertar = "";
         
@@ -77,6 +62,30 @@ class PomodoroDB{
         }
         return salida;
     }
+    
+    
+    public String eliminarTabla(String tabla) throws SQLException{
+        String valores = "", salida = "", valor = "", campos = "";
+        
+        rs=stmt.executeQuery("SELECT COLUMN_NAME FROM information_schema.KEY_COLUMN_USAGE "+
+                             "WHERE TABLE_NAME = '"+tabla+"' AND CONSTRAINT_NAME = 'PRIMARY'");
+        while (rs.next()){
+            valor = JOptionPane.showInputDialog("Insertar valor para "+rs.getString(1));
+            campos += rs.getString(1)+",";
+            valores += "'"+valor+"',";
+        }
+        campos = campos.substring(0, campos.length() - 1);
+        valores = valores.substring(0, valores.length() - 1);
+        
+        try {
+            stmt.executeUpdate("delete from "+tabla+" where ("+campos+") in (("+valores+"))");
+            salida = "Valores eliminados con éxito";
+        } catch (SQLException ex) {
+            salida = "Error al eliminar los datos";
+        }
+        return salida;
+    }
+     
     
     public void cerrarConexion() throws SQLException {
         con.close();

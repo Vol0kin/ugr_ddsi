@@ -10,10 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.awt.*;
-import javax.swing.JComboBox;
-import javax.swing.JDesktopPane;
-import javax.swing.JPanel;
-import javax.swing.JTextPane;
 
 /**
  *
@@ -28,6 +24,8 @@ public class PomodoroGUI extends javax.swing.JFrame {
      */
     public PomodoroGUI() {
         initComponents();
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
     }
 
     /**
@@ -39,27 +37,115 @@ public class PomodoroGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        botonEliminarEmpleado = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        botonAniadirEmpleado = new javax.swing.JButton();
+        botonEliminarEmpleado1 = new javax.swing.JButton();
+        botonAniadirTarea = new javax.swing.JButton();
+        botonAsignarTarea = new javax.swing.JButton();
+        botonEliminarTarea = new javax.swing.JButton();
+        botonDesasignarEmpleado = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         botonEliminarPlato = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
         botonIncluirProveedor = new javax.swing.JButton();
-        botonMostrarBD = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
+        botonMostrarBD = new javax.swing.JButton();
+        titulo = new javax.swing.JLabel();
         botonInsertar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("BASE DE DATOS DEL RESTAURANTE POMODORO");
-        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-
-        botonEliminarEmpleado.setText("Eliminar Empleado (RF 1.2)");
-        botonEliminarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+        botonAniadirEmpleado.setText("Añadir Empleado");
+        botonAniadirEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonAniadirEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonAniadirEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonEliminarEmpleadoActionPerformed(evt);
+                botonAniadirEmpleadoActionPerformed(evt);
             }
         });
+
+        botonEliminarEmpleado1.setText("Eliminar Empleado");
+        botonEliminarEmpleado1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonEliminarEmpleado1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarEmpleado1ActionPerformed(evt);
+            }
+        });
+
+        botonAniadirTarea.setText("Añadir Tarea");
+        botonAniadirTarea.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonAniadirTarea.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonAniadirTarea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAniadirTareaActionPerformed(evt);
+            }
+        });
+
+        botonAsignarTarea.setText("Asignar Empleado a una Tarea");
+        botonAsignarTarea.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonAsignarTarea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAsignarTareaActionPerformed(evt);
+            }
+        });
+
+        botonEliminarTarea.setText("Eliminar Tarea");
+        botonEliminarTarea.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonEliminarTarea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarTareaActionPerformed(evt);
+            }
+        });
+
+        botonDesasignarEmpleado.setText("Desasignar Empleado a una Tarea");
+        botonDesasignarEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonDesasignarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonDesasignarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonDesasignarEmpleadoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botonEliminarEmpleado1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonAniadirEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(79, 79, 79)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botonEliminarTarea, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(botonDesasignarEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonAsignarTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonAniadirTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(botonAniadirTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(botonAniadirEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonEliminarEmpleado1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(botonEliminarTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonAsignarTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonDesasignarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Gestión de Empleados", jPanel1);
 
         botonEliminarPlato.setText("Eliminar Plato (RF 2.2)");
         botonEliminarPlato.addActionListener(new java.awt.event.ActionListener() {
@@ -68,6 +154,29 @@ public class PomodoroGUI extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 784, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(164, 164, 164)
+                    .addComponent(botonEliminarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(426, Short.MAX_VALUE)))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 343, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(149, 149, 149)
+                    .addComponent(botonEliminarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(137, Short.MAX_VALUE)))
+        );
+
+        jTabbedPane1.addTab("Gestión de Menus", jPanel2);
+
         botonIncluirProveedor.setText("Incluir Proveedor (RF 3.1)");
         botonIncluirProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,21 +184,53 @@ public class PomodoroGUI extends javax.swing.JFrame {
             }
         });
 
-        botonMostrarBD.setText("Mostrar Base de Datos");
-        botonMostrarBD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMostrarBDActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 784, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(164, 164, 164)
+                    .addComponent(botonIncluirProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(426, Short.MAX_VALUE)))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 343, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(149, 149, 149)
+                    .addComponent(botonIncluirProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(137, Short.MAX_VALUE)))
+        );
 
+        jTabbedPane1.addTab("Gestión de Proveedores", jPanel3);
+
+        botonSalir.setBackground(new java.awt.Color(210, 62, 52));
         botonSalir.setText("Salir");
+        botonSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSalirActionPerformed(evt);
             }
         });
 
+        botonMostrarBD.setText("Mostrar Base de Datos");
+        botonMostrarBD.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonMostrarBD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMostrarBDActionPerformed(evt);
+            }
+        });
+
+        titulo.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo.setText("BASE DE DATOS DEL RESTAURANTE POMODORO");
+        titulo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+
         botonInsertar.setText("Insertar en la Base de Datos");
+        botonInsertar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonInsertar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonInsertarActionPerformed(evt);
@@ -102,48 +243,33 @@ public class PomodoroGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botonEliminarEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonEliminarPlato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonIncluirProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(botonMostrarBD, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(101, 101, 101))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addComponent(botonInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botonMostrarBD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTabbedPane1))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonEliminarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonEliminarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonIncluirProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(botonMostrarBD, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(botonInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonMostrarBD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(botonInsertar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -167,16 +293,15 @@ public class PomodoroGUI extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_botonSalirActionPerformed
 
-    private void botonEliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarEmpleadoActionPerformed
-        String dni_emp = "", salida = "";
-        dni_emp = JOptionPane.showInputDialog(this, "Introduce el DNI del empleado");
+    private void botonAniadirEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadirEmpleadoActionPerformed
+        String db = "";
         try {
-            salida = pomDB.eliminarEmpleado(dni_emp);
+            db = pomDB.insertarTabla("Empleado");
+            JOptionPane.showMessageDialog(this, db);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al eliminar el empleado");
+            JOptionPane.showMessageDialog(this, "Error al añadir un empleado");
         }
-        JOptionPane.showMessageDialog(this, salida);        
-    }//GEN-LAST:event_botonEliminarEmpleadoActionPerformed
+    }//GEN-LAST:event_botonAniadirEmpleadoActionPerformed
 
     private void botonMostrarBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarBDActionPerformed
         String db = "", tabla = "";
@@ -204,6 +329,56 @@ public class PomodoroGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "La tabla que has introducido no existe");
         }
     }//GEN-LAST:event_botonInsertarActionPerformed
+
+    private void botonEliminarEmpleado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarEmpleado1ActionPerformed
+        String salida = "";
+        try {
+            salida = pomDB.eliminarTabla("Empleado");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error al eliminar el empleado");
+        }
+        JOptionPane.showMessageDialog(this, salida);  
+    }//GEN-LAST:event_botonEliminarEmpleado1ActionPerformed
+
+    private void botonAsignarTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAsignarTareaActionPerformed
+        String db = "";
+        try {
+            db = pomDB.insertarTabla("asignacion");
+            JOptionPane.showMessageDialog(this, db);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error al asignar tarea");
+        }
+    }//GEN-LAST:event_botonAsignarTareaActionPerformed
+
+    private void botonAniadirTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadirTareaActionPerformed
+        String db = "";
+        try {
+            db = pomDB.insertarTabla("Tarea");
+            JOptionPane.showMessageDialog(this, db);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error al insertar una tarea nueva");
+        }
+    }//GEN-LAST:event_botonAniadirTareaActionPerformed
+
+    private void botonEliminarTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarTareaActionPerformed
+        String salida = "";
+        try {
+            salida = pomDB.eliminarTabla("Tarea");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error al eliminar la tarea");
+        }
+        JOptionPane.showMessageDialog(this, salida); 
+    }//GEN-LAST:event_botonEliminarTareaActionPerformed
+
+    private void botonDesasignarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDesasignarEmpleadoActionPerformed
+        String salida = "";
+        try {
+            salida = pomDB.eliminarTabla("asignacion");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error al desasignar empleado");
+        }
+        JOptionPane.showMessageDialog(this, salida); 
+    }//GEN-LAST:event_botonDesasignarEmpleadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,12 +419,21 @@ public class PomodoroGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonEliminarEmpleado;
+    private javax.swing.JButton botonAniadirEmpleado;
+    private javax.swing.JButton botonAniadirTarea;
+    private javax.swing.JButton botonAsignarTarea;
+    private javax.swing.JButton botonDesasignarEmpleado;
+    private javax.swing.JButton botonEliminarEmpleado1;
     private javax.swing.JButton botonEliminarPlato;
+    private javax.swing.JButton botonEliminarTarea;
     private javax.swing.JButton botonIncluirProveedor;
     private javax.swing.JButton botonInsertar;
     private javax.swing.JButton botonMostrarBD;
     private javax.swing.JButton botonSalir;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }
