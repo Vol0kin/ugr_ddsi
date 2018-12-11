@@ -43,22 +43,23 @@ class PomodoroDB{
     
    
     public String insertarTabla(String tabla) throws SQLException{
-        String valores = "", salida = "", a_insertar = "";
+        String valores = "", salida = "", a_insertar;
         
         rs=stmt.executeQuery("show columns from "+tabla);
         while (rs.next()){
-            a_insertar = JOptionPane.showInputDialog("Insertar valor para "+
-                                                          rs.getString(1)) + "',";
+            a_insertar = JOptionPane.showInputDialog("Insertar valor para "+ rs.getString(1));
+            if ("".equals(a_insertar)) a_insertar = null;
+            
             if (a_insertar == null) return "Error al insertar los datos";
-            else                    valores += "'" + a_insertar;
+            else                    valores += "'" + a_insertar + "',";
         }
         valores = valores.substring(0, valores.length() - 1);
         
         try {
             stmt.executeUpdate("insert into "+tabla+" values("+valores+")");
-            salida = "Valores insertados con éxito";
+            salida = "Query OK";
         } catch (SQLException ex) {
-            salida = "Error al insertar los datos";
+            salida = "Error";
         }
         return salida;
     }
@@ -79,9 +80,9 @@ class PomodoroDB{
         
         try {
             stmt.executeUpdate("delete from "+tabla+" where ("+campos+") in (("+valores+"))");
-            salida = "Valores eliminados con éxito";
+            salida = "Query OK";
         } catch (SQLException ex) {
-            salida = "Error al eliminar los datos";
+            salida = "Error";
         }
         return salida;
     }
