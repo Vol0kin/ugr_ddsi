@@ -11,8 +11,8 @@ import net.proteanit.sql.DbUtils;
 
 class PomodoroDB{
     Connection con;
-    Statement stmt;
-    ResultSet rs;
+    Statement stmt, stmt2;
+    ResultSet rs, rs2;
     
     public void PomodoroDB(){  
     }
@@ -24,7 +24,8 @@ class PomodoroDB{
             con=DriverManager.getConnection(  
             "jdbc:mysql://localhost/pomodoro","root","Pomodoro_DDS1");  
             
-            stmt=con.createStatement();  
+            stmt=con.createStatement();
+            stmt2=con.createStatement();
               
         }catch(Exception e){ System.out.println(e);}  
     }
@@ -48,10 +49,11 @@ class PomodoroDB{
         rs=stmt.executeQuery("show columns from "+tabla);
         while (rs.next()){
             a_insertar = JOptionPane.showInputDialog("Insertar valor para "+ rs.getString(1));
-            if ("".equals(a_insertar)) a_insertar = null;
             
-            if (a_insertar == null) return "Error al insertar los datos";
-            else                    valores += "'" + a_insertar + "',";
+            if ("".equals(a_insertar) && "NO".equals(isNull(tabla, rs.getString(1))) )
+                return "Error al insertar los datos";
+            else
+                valores += "'" + a_insertar + "',";
         }
         valores = valores.substring(0, valores.length() - 1);
         
@@ -64,7 +66,14 @@ class PomodoroDB{
         return salida;
     }
     
+    public String isNull(String tabla, String columna) throws SQLException{
+        rs2 = stmt2.executeQuery("SELECT IS_NULLABLE COLUMN_DEFAULT FROM INFORMATION_SCHEMA.COLUMNS"
+                              + " WHERE table_name = '"+tabla+"' AND column_name = '"+columna+"'");
+        rs2.next();
+        return rs2.getString(1);
+    }
     
+       
     public String eliminarTabla(String tabla) throws SQLException{
         String valores = "", salida = "", valor = "", campos = "";
         

@@ -53,7 +53,6 @@ public class PomodoroGUI extends javax.swing.JFrame {
         botonSalir = new javax.swing.JButton();
         botonMostrarBD = new javax.swing.JButton();
         titulo = new javax.swing.JLabel();
-        botonInsertar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -236,14 +235,6 @@ public class PomodoroGUI extends javax.swing.JFrame {
         titulo.setText("BASE DE DATOS DEL RESTAURANTE POMODORO");
         titulo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
-        botonInsertar.setText("Insertar en la Base de Datos");
-        botonInsertar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        botonInsertar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonInsertarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -253,11 +244,11 @@ public class PomodoroGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(botonMostrarBD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
+                        .addComponent(botonMostrarBD, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41))
                     .addComponent(jTabbedPane1))
                 .addContainerGap())
         );
@@ -268,14 +259,10 @@ public class PomodoroGUI extends javax.swing.JFrame {
                 .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonMostrarBD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(botonInsertar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                    .addComponent(botonMostrarBD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -328,20 +315,6 @@ public class PomodoroGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "La tabla que has introducido no existe");
         }
     }//GEN-LAST:event_botonMostrarBDActionPerformed
-
-    private void botonInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInsertarActionPerformed
-        String db = "", tabla = "";
-        String[] options = {"Empleado", "Tarea", "Menu", "Plato", "Proveedor", "Ingrediente",
-                          "menu_contiene_plato", "plato_contiene_ing", "provee", "asignacion"};
-        tabla = (String) JOptionPane.showInputDialog(null,"Selecciona una tabla", "Tablas...",
-                                            JOptionPane.QUESTION_MESSAGE,null,options, options[0]);
-        try {
-            db = pomDB.insertarTabla(tabla);
-            JOptionPane.showMessageDialog(this, db);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "La tabla que has introducido no existe");
-        }
-    }//GEN-LAST:event_botonInsertarActionPerformed
 
     private void botonEliminarEmpleado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarEmpleado1ActionPerformed
         String salida = "";
@@ -451,7 +424,6 @@ public class PomodoroGUI extends javax.swing.JFrame {
     private javax.swing.JButton botonEliminarPlato;
     private javax.swing.JButton botonEliminarTarea;
     private javax.swing.JButton botonIncluirProveedor;
-    private javax.swing.JButton botonInsertar;
     private javax.swing.JButton botonMostrarBD;
     private javax.swing.JButton botonSalir;
     private javax.swing.JPanel jPanel1;
