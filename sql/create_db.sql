@@ -1,5 +1,7 @@
 -- Subsistema Gestion de Empleados
 
+USE pomodoro;
+
 CREATE TABLE Empleado (
 	dni_emp VARCHAR(9) PRIMARY KEY,
 	nombre_apellidos VARCHAR(60) NOT NULL,
