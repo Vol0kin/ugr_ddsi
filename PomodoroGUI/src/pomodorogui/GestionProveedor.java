@@ -16,7 +16,7 @@ public class GestionProveedor
     private static ResultSet rs = null;
     private static int resultado;
     
-    public static void insertarProveedor(Connection conn)
+    public void insertarProveedor(Connection conn)
     {
         try
         {
@@ -31,7 +31,7 @@ public class GestionProveedor
         }
     }
 
-    public static void eliminarProveedor(Connection conn)
+    public void eliminarProveedor(Connection conn)
     {
         try
         {
@@ -45,7 +45,7 @@ public class GestionProveedor
         }
     }
 
-    public static void modificarProveedor(Connection conn, String dato)
+    public void modificarProveedor(Connection conn, String dato)
     {
         try
         {
@@ -68,7 +68,7 @@ public class GestionProveedor
         }
     }
 
-    public static void buscarProveedor(Connection conn, String dato)
+    public void buscarProveedor(Connection conn, String dato)
     {
         try
         {
@@ -88,7 +88,7 @@ public class GestionProveedor
         }
     }
 
-    public static void establecerIngredienteProvisto(Connection conn)
+    public void establecerIngredienteProvisto(Connection conn)
     {
         try
         {
