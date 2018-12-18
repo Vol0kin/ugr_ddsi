@@ -417,10 +417,10 @@ public class PomodoroGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botonMostrarBD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -615,12 +615,10 @@ public class PomodoroGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_botonAsignarIngredientesActionPerformed
 
     private void botonAsignarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAsignarMenuActionPerformed
-        String db = "";
         try {
-            db = pomDB.insertarTabla("menu_contiene_plato");
-            JOptionPane.showMessageDialog(this, db);
+            pomDB.insertarPlatosMenu();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al asignar plato");
+            JOptionPane.showMessageDialog(this, "Error al establecer ingredientes provistos");
         }
     }//GEN-LAST:event_botonAsignarMenuActionPerformed
 

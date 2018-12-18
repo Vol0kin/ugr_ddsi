@@ -1,11 +1,7 @@
 package pomodorogui;
 
 import java.sql.*;
-import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
@@ -41,6 +37,30 @@ class PomodoroDB{
         TableModel model = DbUtils.resultSetToTableModel(rs);
         tablaMostrar.jLabel1.setText("Contenido de la tabla "+tabla);
         tablaMostrar.jTable1.setModel(model); 
+    }
+    
+    
+    public void insertarPlatosMenu() throws SQLException{
+        String valores = "", salida = "", menu = "";
+        
+        ArrayList<String> menusList = new ArrayList();
+        rs=stmt.executeQuery("select id_menu from Menu where disponibilidad = 'SI'");
+        while ( rs.next() ){
+            menusList.add( rs.getString(1) );
+        }
+        String[] menus = new String[menusList.size()];
+        menus = menusList.toArray(menus);
+        menu = (String) JOptionPane.showInputDialog(null,"Selecciona un menú", "Menús",
+                                            JOptionPane.QUESTION_MESSAGE,null,menus, menus[0]);
+        
+        ArrayList<String> platos = new ArrayList();
+        rs=stmt.executeQuery("select cod_plato from Plato where disponibilidad = 'SI'");
+        while ( rs.next() ){
+            platos.add( rs.getString(1) );
+        }
+        
+        MenuContienePlato mcp = new MenuContienePlato(platos, menu, stmt);
+        mcp.setVisible(true);
     }
     
    
