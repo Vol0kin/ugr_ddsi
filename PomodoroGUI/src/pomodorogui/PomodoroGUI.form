@@ -27,11 +27,9 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="botonMostrarBD" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="32767" attributes="0"/>
                       <Component id="botonSalir" max="32767" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Component id="titulo" max="32767" attributes="0"/>
                   <Component id="jTabbedPane1" max="32767" attributes="0"/>

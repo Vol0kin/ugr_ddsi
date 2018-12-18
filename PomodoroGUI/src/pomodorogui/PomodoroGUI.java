@@ -605,12 +605,10 @@ public class PomodoroGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_botonAniadirMenuActionPerformed
 
     private void botonAsignarIngredientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAsignarIngredientesActionPerformed
-        String db = "";
         try {
-            db = pomDB.insertarTabla("plato_contiene_ing");
-            JOptionPane.showMessageDialog(this, db);
+            pomDB.insertarIngredientePlato();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al asignar ingredientes");
+            JOptionPane.showMessageDialog(this, "Error al establecer ingredientes provistos");
         }
     }//GEN-LAST:event_botonAsignarIngredientesActionPerformed
 
@@ -618,7 +616,7 @@ public class PomodoroGUI extends javax.swing.JFrame {
         try {
             pomDB.insertarPlatosMenu();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al establecer ingredientes provistos");
+            JOptionPane.showMessageDialog(this, "Error al establecer platos del menu");
         }
     }//GEN-LAST:event_botonAsignarMenuActionPerformed
 
@@ -687,10 +685,8 @@ public class PomodoroGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_botonModificarIngredienteActionPerformed
 
     private void botonEstablecerIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEstablecerIngredienteActionPerformed
-        String db = "";
         try {
-            db = pomDB.insertarTabla("provee");
-            JOptionPane.showMessageDialog(this, db);
+            pomDB.establecerIngrediente();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Error al establecer ingredientes provistos");
         }

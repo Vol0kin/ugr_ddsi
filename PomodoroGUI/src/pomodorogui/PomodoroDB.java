@@ -63,6 +63,52 @@ class PomodoroDB{
         mcp.setVisible(true);
     }
     
+    
+    public void insertarIngredientePlato() throws SQLException{
+        String valores = "", salida = "", plato = "";
+        
+        ArrayList<String> platosList = new ArrayList();
+        rs=stmt.executeQuery("select cod_plato from Plato where disponibilidad = 'SI'");
+        while ( rs.next() ){
+            platosList.add( rs.getString(1) );
+        }
+        String[] platos = new String[platosList.size()];
+        platos = platosList.toArray(platos);
+        plato = (String) JOptionPane.showInputDialog(null,"Selecciona un plato", "Platos",
+                                            JOptionPane.QUESTION_MESSAGE,null,platos, platos[0]);
+        
+        ArrayList<String> ing = new ArrayList();
+        rs=stmt.executeQuery("select cod_ing from Ingrediente");
+        while ( rs.next() ){
+            ing.add( rs.getString(1) );
+        }
+        
+        PlatoContieneIngrediente pci = new PlatoContieneIngrediente(ing, plato, stmt);
+        pci.setVisible(true);
+    }
+    
+    public void establecerIngrediente() throws SQLException{
+        String valores = "", salida = "", prov = "";
+        
+        ArrayList<String> provList = new ArrayList();
+        rs=stmt.executeQuery("select dni from Proveedor");
+        while ( rs.next() ){
+            provList.add( rs.getString(1) );
+        }
+        String[] provs = new String[provList.size()];
+        provs = provList.toArray(provs);
+        prov = (String) JOptionPane.showInputDialog(null,"Selecciona un proveedor", "Proveedores",
+                                            JOptionPane.QUESTION_MESSAGE,null,provs, provs[0]);
+        
+        ArrayList<String> ing = new ArrayList();
+        rs=stmt.executeQuery("select cod_ing from Ingrediente");
+        while ( rs.next() ){
+            ing.add( rs.getString(1) );
+        }
+        
+        EstablecerIngrediente ei = new EstablecerIngrediente(ing, prov, stmt);
+        ei.setVisible(true);
+    }
    
     public String insertarTabla(String tabla) throws SQLException{
         String valores = "", salida = "", a_insertar;
@@ -84,7 +130,7 @@ class PomodoroDB{
             else{
                 a_insertar = JOptionPane.showInputDialog("Insertar valor para "+ rs.getString(1));
 
-                if ("".equals(a_insertar) && "NO".equals(isNull(tabla, rs.getString(1))) && null == a_insertar)
+                if (("".equals(a_insertar) && "NO".equals(isNull(tabla, rs.getString(1)))) || null == a_insertar)
                     return "Error al insertar los datos";
                 else
                     valores += "'" + a_insertar + "',";
@@ -168,7 +214,7 @@ class PomodoroDB{
         }
         else{
             a_insertar = JOptionPane.showInputDialog("Insertar valor para "+ eleccion);
-            if ("".equals(a_insertar) && "NO".equals(isNull(tabla, eleccion)) && null == a_insertar)
+            if (("".equals(a_insertar) && "NO".equals(isNull(tabla, eleccion))) || null == a_insertar)
                 return "Error al insertar los datos";
         }
         
