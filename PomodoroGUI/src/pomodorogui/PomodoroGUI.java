@@ -545,13 +545,7 @@ public class PomodoroGUI extends javax.swing.JFrame {
     
     
     private void botonAniadirPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadirPlatoActionPerformed
-        String db = "";
-        try {
-            db = pomDB.insertarTabla("Plato");
-            JOptionPane.showMessageDialog(this, db);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al añadir un plato");
-        }
+        pomDB.gMenu.aniadirPlato(this);
     }//GEN-LAST:event_botonAniadirPlatoActionPerformed
 
     private void botonEliminarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarPlatoActionPerformed
@@ -606,7 +600,7 @@ public class PomodoroGUI extends javax.swing.JFrame {
 
     private void botonAsignarIngredientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAsignarIngredientesActionPerformed
         try {
-            pomDB.insertarIngredientePlato();
+            pomDB.gMenu.insertarIngredientePlato();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Error al establecer ingredientes provistos");
         }
@@ -614,7 +608,7 @@ public class PomodoroGUI extends javax.swing.JFrame {
 
     private void botonAsignarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAsignarMenuActionPerformed
         try {
-            pomDB.insertarPlatosMenu();
+            pomDB.gMenu.insertarPlatosMenu();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Error al establecer platos del menu");
         }
@@ -686,7 +680,7 @@ public class PomodoroGUI extends javax.swing.JFrame {
 
     private void botonEstablecerIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEstablecerIngredienteActionPerformed
         try {
-            pomDB.establecerIngrediente();
+            pomDB.gProv.establecerIngrediente();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Error al establecer ingredientes provistos");
         }
@@ -723,9 +717,8 @@ public class PomodoroGUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new PomodoroGUI().setVisible(true);
                 pomDB = new PomodoroDB();
-                pomDB.crearConexion();
+                new PomodoroGUI().setVisible(true);
             }
         });
     }

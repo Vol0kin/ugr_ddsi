@@ -5,6 +5,8 @@
  */
 package pomodorogui;
 import java.sql.*;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,6 +17,11 @@ public class GestionProveedor
     private static Statement stmt = null;
     private static ResultSet rs = null;
     private static int resultado;
+    
+    public GestionProveedor(Statement stmt, ResultSet rs) {
+        this.stmt = stmt;
+        this.rs = rs;
+    }
     
     public void insertarProveedor(Connection conn)
     {
@@ -101,5 +108,29 @@ public class GestionProveedor
         } catch(Exception e) {
             System.out.println(e);
         }
+    }
+    
+    public void establecerIngrediente() throws SQLException
+        {
+        String valores = "", salida = "", prov = "";
+        
+        ArrayList<String> provList = new ArrayList();
+        rs=stmt.executeQuery("select dni from Proveedor");
+        while ( rs.next() ){
+            provList.add( rs.getString(1) );
+        }
+        String[] provs = new String[provList.size()];
+        provs = provList.toArray(provs);
+        prov = (String) JOptionPane.showInputDialog(null,"Selecciona un proveedor", "Proveedores",
+                                            JOptionPane.QUESTION_MESSAGE,null,provs, provs[0]);
+        
+        ArrayList<String> ing = new ArrayList();
+        rs=stmt.executeQuery("select cod_ing from Ingrediente");
+        while ( rs.next() ){
+            ing.add( rs.getString(1) );
+        }
+        
+        Asignaciones ei = new Asignaciones(ing, prov, stmt, 3);
+        ei.setVisible(true);
     }
 }

@@ -11,8 +11,15 @@ class PomodoroDB{
     Statement stmt, stmt2;
     ResultSet rs, rs2;
     
-    public void PomodoroDB(){  
+    GestionMenu gMenu;
+    GestionProveedor gProv;
+    
+    public PomodoroDB(){
+        this.crearConexion();
+        gMenu = new GestionMenu(stmt, rs);
+        gProv = new GestionProveedor(stmt, rs);
     }
+    
     
     
     public void crearConexion(){
@@ -40,76 +47,8 @@ class PomodoroDB{
     }
     
     
-    public void insertarPlatosMenu() throws SQLException{
-        String valores = "", salida = "", menu = "";
-        
-        ArrayList<String> menusList = new ArrayList();
-        rs=stmt.executeQuery("select id_menu from Menu where disponibilidad = 'SI'");
-        while ( rs.next() ){
-            menusList.add( rs.getString(1) );
-        }
-        String[] menus = new String[menusList.size()];
-        menus = menusList.toArray(menus);
-        menu = (String) JOptionPane.showInputDialog(null,"Selecciona un menú", "Menús",
-                                            JOptionPane.QUESTION_MESSAGE,null,menus, menus[0]);
-        
-        ArrayList<String> platos = new ArrayList();
-        rs=stmt.executeQuery("select cod_plato from Plato where disponibilidad = 'SI'");
-        while ( rs.next() ){
-            platos.add( rs.getString(1) );
-        }
-        
-        MenuContienePlato mcp = new MenuContienePlato(platos, menu, stmt);
-        mcp.setVisible(true);
-    }
-    
-    
-    public void insertarIngredientePlato() throws SQLException{
-        String valores = "", salida = "", plato = "";
-        
-        ArrayList<String> platosList = new ArrayList();
-        rs=stmt.executeQuery("select cod_plato from Plato where disponibilidad = 'SI'");
-        while ( rs.next() ){
-            platosList.add( rs.getString(1) );
-        }
-        String[] platos = new String[platosList.size()];
-        platos = platosList.toArray(platos);
-        plato = (String) JOptionPane.showInputDialog(null,"Selecciona un plato", "Platos",
-                                            JOptionPane.QUESTION_MESSAGE,null,platos, platos[0]);
-        
-        ArrayList<String> ing = new ArrayList();
-        rs=stmt.executeQuery("select cod_ing from Ingrediente");
-        while ( rs.next() ){
-            ing.add( rs.getString(1) );
-        }
-        
-        PlatoContieneIngrediente pci = new PlatoContieneIngrediente(ing, plato, stmt);
-        pci.setVisible(true);
-    }
-    
-    public void establecerIngrediente() throws SQLException{
-        String valores = "", salida = "", prov = "";
-        
-        ArrayList<String> provList = new ArrayList();
-        rs=stmt.executeQuery("select dni from Proveedor");
-        while ( rs.next() ){
-            provList.add( rs.getString(1) );
-        }
-        String[] provs = new String[provList.size()];
-        provs = provList.toArray(provs);
-        prov = (String) JOptionPane.showInputDialog(null,"Selecciona un proveedor", "Proveedores",
-                                            JOptionPane.QUESTION_MESSAGE,null,provs, provs[0]);
-        
-        ArrayList<String> ing = new ArrayList();
-        rs=stmt.executeQuery("select cod_ing from Ingrediente");
-        while ( rs.next() ){
-            ing.add( rs.getString(1) );
-        }
-        
-        EstablecerIngrediente ei = new EstablecerIngrediente(ing, prov, stmt);
-        ei.setVisible(true);
-    }
    
+    
     public String insertarTabla(String tabla) throws SQLException{
         String valores = "", salida = "", a_insertar;
         
