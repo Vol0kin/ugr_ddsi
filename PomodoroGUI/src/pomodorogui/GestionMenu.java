@@ -50,7 +50,8 @@ public class GestionMenu {
                                             JOptionPane.QUESTION_MESSAGE,null,menus, menus[0]);
         
         ArrayList<String> platos = new ArrayList();
-        rs=stmt.executeQuery("select cod_plato from Plato where disponibilidad = 'SI'");
+        rs=stmt.executeQuery("select cod_plato from Plato where disponibilidad = 'SI' and cod_plato not in "
+                           + "(select cod_plato from menu_contiene_plato where id_menu = '"+menu+"')");
         while ( rs.next() ){
             platos.add( rs.getString(1) );
         }
@@ -72,7 +73,8 @@ public class GestionMenu {
                                             JOptionPane.QUESTION_MESSAGE,null,platos, platos[0]);
         
         ArrayList<String> ing = new ArrayList();
-        rs=stmt.executeQuery("select cod_ing from Ingrediente");
+        rs=stmt.executeQuery("select cod_ing from Ingrediente and cod_ing not in "
+                           + "(select cod_ing from plato_contiene_ing where cod_plato = '"+plato+"')");
         while ( rs.next() ){
             ing.add( rs.getString(1) );
         }

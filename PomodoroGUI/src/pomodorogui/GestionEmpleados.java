@@ -91,7 +91,8 @@ public class GestionEmpleados {
                                             JOptionPane.QUESTION_MESSAGE,null,menus, menus[0]);
         
         ArrayList<String> platos = new ArrayList();
-        rs=stmt.executeQuery("select dni_emp from Empleado");
+        rs=stmt.executeQuery("select dni_emp from Empleado and dni_emp not in "
+                           + "(select dni_emp from asignacion where nom_ta = '"+menu+"')");
         while ( rs.next() ){
             platos.add( rs.getString(1) );
         }
