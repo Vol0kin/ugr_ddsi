@@ -13,11 +13,13 @@ class PomodoroDB{
     
     GestionMenu gMenu;
     GestionProveedor gProv;
+    GestionEmpleados gEmp;
     
     public PomodoroDB(){
         this.crearConexion();
         gMenu = new GestionMenu(stmt, rs);
         gProv = new GestionProveedor(stmt, rs);
+        gEmp = new GestionEmpleados(stmt, rs);
     }
     
     

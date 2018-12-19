@@ -74,6 +74,16 @@ public class Asignaciones extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error");
         }      
     }
+    
+    public void asignarTarea(String valores){
+        try {
+            stmt.executeUpdate("insert into asignacion (nom_ta, dni_emp) "+
+                               "values"+valores);
+            JOptionPane.showMessageDialog(this, "Query OK");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error");
+        }      
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -158,6 +168,9 @@ public class Asignaciones extends javax.swing.JFrame {
                 break;
             case 3:
                 establecerIngrediente(valores);
+                break;
+            case 4:
+                asignarTarea(valores);
                 break;
         }
         

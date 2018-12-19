@@ -458,13 +458,7 @@ public class PomodoroGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonAniadirEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadirEmpleadoActionPerformed
-        String db = "";
-        try {
-            db = pomDB.insertarTabla("Empleado");
-            JOptionPane.showMessageDialog(this, db);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al añadir un empleado");
-        }
+        pomDB.gEmp.aniadirEmpleado(this);
     }//GEN-LAST:event_botonAniadirEmpleadoActionPerformed
 
     private void botonMostrarBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarBDActionPerformed
@@ -481,43 +475,23 @@ public class PomodoroGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_botonMostrarBDActionPerformed
 
     private void botonEliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarEmpleadoActionPerformed
-        String salida = "";
-        try {
-            salida = pomDB.eliminarTabla("Empleado");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al eliminar el empleado");
-        }
-        JOptionPane.showMessageDialog(this, salida);  
+        pomDB.gEmp.eliminarEmpleado(this); 
     }//GEN-LAST:event_botonEliminarEmpleadoActionPerformed
 
     private void botonAsignarTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAsignarTareaActionPerformed
-        String db = "";
         try {
-            db = pomDB.insertarTabla("asignacion");
-            JOptionPane.showMessageDialog(this, db);
+            pomDB.gEmp.asignarEmpleadoTarea();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al asignar tarea");
+            JOptionPane.showMessageDialog(this, "Error al asignar empleado a una tarea");
         }
     }//GEN-LAST:event_botonAsignarTareaActionPerformed
 
     private void botonAniadirTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadirTareaActionPerformed
-        String db = "";
-        try {
-            db = pomDB.insertarTabla("Tarea");
-            JOptionPane.showMessageDialog(this, db);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al insertar una tarea nueva");
-        }
+        pomDB.gEmp.aniadirTarea(this);
     }//GEN-LAST:event_botonAniadirTareaActionPerformed
 
     private void botonEliminarTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarTareaActionPerformed
-        String salida = "";
-        try {
-            salida = pomDB.eliminarTabla("Tarea");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al eliminar la tarea");
-        }
-        JOptionPane.showMessageDialog(this, salida); 
+        pomDB.gEmp.eliminarTarea(this); 
     }//GEN-LAST:event_botonEliminarTareaActionPerformed
 
     private void botonDesasignarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDesasignarEmpleadoActionPerformed
@@ -531,13 +505,7 @@ public class PomodoroGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_botonDesasignarEmpleadoActionPerformed
 
     private void botonModificarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarEmpleadoActionPerformed
-        String db = "";
-        try {
-            db = pomDB.modificarTabla("Empleado");
-            JOptionPane.showMessageDialog(this, db);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al modificar un empleado");
-        }
+        pomDB.gEmp.modificarEmpleado(this);
     }//GEN-LAST:event_botonModificarEmpleadoActionPerformed
 
     
