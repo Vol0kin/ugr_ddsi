@@ -23,18 +23,14 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="botonMostrarBD" max="32767" attributes="0"/>
-                      <EmptySpace type="unrelated" max="32767" attributes="0"/>
-                      <Component id="botonSalir" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="titulo" max="32767" attributes="0"/>
-                  <Component id="jTabbedPane1" max="32767" attributes="0"/>
+                  <Component id="titulo" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jTabbedPane1" alignment="1" max="32767" attributes="0"/>
+                  <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -43,14 +39,11 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="titulo" min="-2" pref="53" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jTabbedPane1" min="-2" pref="447" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel4" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="jTabbedPane1" min="-2" pref="381" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="botonMostrarBD" alignment="3" pref="54" max="32767" attributes="0"/>
-                  <Component id="botonSalir" alignment="3" pref="54" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -72,48 +65,48 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace pref="85" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="botonEliminarEmpleado" pref="229" max="32767" attributes="0"/>
-                          <Component id="botonAniadirEmpleado" max="32767" attributes="0"/>
-                          <Component id="botonModificarEmpleado" pref="229" max="32767" attributes="0"/>
+                          <Component id="botonEliminarEmpleado" linkSize="11" min="-2" pref="232" max="-2" attributes="0"/>
+                          <Component id="botonAniadirEmpleado" linkSize="11" min="-2" pref="232" max="-2" attributes="0"/>
+                          <Component id="botonModificarEmpleado" linkSize="11" min="-2" pref="232" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                      <EmptySpace pref="80" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="botonEliminarTarea" pref="243" max="32767" attributes="0"/>
-                          <Component id="botonDesasignarEmpleado" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="botonAsignarTarea" pref="242" max="32767" attributes="0"/>
-                              <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="botonAniadirTarea" alignment="0" max="32767" attributes="0"/>
+                          <Component id="botonEliminarTarea" linkSize="11" min="-2" pref="242" max="-2" attributes="0"/>
+                          <Component id="botonDesasignarEmpleado" linkSize="11" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonAsignarTarea" linkSize="11" alignment="0" min="-2" pref="241" max="-2" attributes="0"/>
+                          <Component id="botonAniadirTarea" linkSize="11" alignment="0" min="-2" pref="242" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
+                      <EmptySpace pref="141" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="botonAniadirTarea" min="-2" pref="58" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="botonEliminarTarea" min="-2" pref="58" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="botonAsignarTarea" min="-2" pref="58" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="botonDesasignarEmpleado" min="-2" pref="58" max="-2" attributes="0"/>
-                      <EmptySpace pref="45" max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                      <Component id="botonAniadirEmpleado" min="-2" pref="57" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="botonEliminarEmpleado" min="-2" pref="58" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="botonModificarEmpleado" min="-2" pref="58" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                              <Component id="botonAniadirEmpleado" min="-2" pref="57" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="botonEliminarEmpleado" min="-2" pref="58" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="botonModificarEmpleado" min="-2" pref="58" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="botonAniadirTarea" min="-2" pref="58" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="botonEliminarTarea" min="-2" pref="58" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="botonAsignarTarea" min="-2" pref="58" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="botonDesasignarEmpleado" min="-2" pref="58" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="74" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -214,34 +207,36 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace pref="102" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="botonEliminarPlato" alignment="1" pref="229" max="32767" attributes="0"/>
-                          <Component id="botonAniadirPlato" alignment="1" max="32767" attributes="0"/>
-                          <Component id="botonModificarPlato" alignment="1" pref="229" max="32767" attributes="0"/>
-                          <Component id="botonAsignarIngredientes" alignment="0" pref="229" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="79" max="32767" attributes="0"/>
+                      <EmptySpace pref="113" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="botonEliminarMenu" alignment="0" pref="243" max="32767" attributes="0"/>
-                          <Component id="botonAniadirMenu" alignment="0" max="32767" attributes="0"/>
-                          <Component id="botonModificarMenu" alignment="1" pref="243" max="32767" attributes="0"/>
-                          <Component id="botonAsignarMenu" alignment="0" pref="243" max="32767" attributes="0"/>
+                          <Component id="botonDesasignarIngredientes" pref="244" max="32767" attributes="0"/>
+                          <Component id="botonEliminarPlato" alignment="1" pref="244" max="32767" attributes="0"/>
+                          <Component id="botonAniadirPlato" alignment="1" pref="244" max="32767" attributes="0"/>
+                          <Component id="botonModificarPlato" alignment="1" pref="244" max="32767" attributes="0"/>
+                          <Component id="botonAsignarIngredientes" alignment="0" pref="244" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="131" max="32767" attributes="0"/>
+                      <EmptySpace pref="71" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="botonEliminarMenu" alignment="0" pref="244" max="32767" attributes="0"/>
+                          <Component id="botonAniadirMenu" alignment="0" pref="244" max="32767" attributes="0"/>
+                          <Component id="botonModificarMenu" alignment="1" pref="244" max="32767" attributes="0"/>
+                          <Component id="botonAsignarMenu" alignment="0" pref="244" max="32767" attributes="0"/>
+                          <Component id="botonDesasignarMenu" pref="244" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="118" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace pref="26" max="32767" attributes="0"/>
+                      <EmptySpace pref="20" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="botonAniadirMenu" min="-2" pref="58" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" pref="16" max="32767" attributes="0"/>
                               <Component id="botonEliminarMenu" min="-2" pref="58" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="32767" attributes="0"/>
+                              <EmptySpace pref="21" max="32767" attributes="0"/>
                               <Component id="botonModificarMenu" min="-2" pref="58" max="-2" attributes="0"/>
                               <EmptySpace pref="2" max="-2" attributes="0"/>
                           </Group>
@@ -253,12 +248,17 @@
                               <Component id="botonModificarPlato" min="-2" pref="58" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="botonAsignarIngredientes" min="-2" pref="58" max="-2" attributes="0"/>
                           <Component id="botonAsignarMenu" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="35" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="botonDesasignarIngredientes" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
+                          <Component id="botonDesasignarMenu" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="24" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -354,6 +354,28 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAsignarMenuActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="botonDesasignarIngredientes">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Desasignar Ingredientes al Plato"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor de Mano"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonDesasignarIngredientesActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="botonDesasignarMenu">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Desasignar Plato a un Men&#xfa;"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor de Mano"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonDesasignarMenuActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel3">
@@ -369,47 +391,50 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="94" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="botonEliminarProveedor" alignment="1" pref="229" max="32767" attributes="0"/>
-                          <Component id="botonAniadirProveedor" alignment="1" max="32767" attributes="0"/>
-                          <Component id="botonModificarProveedor" alignment="1" pref="229" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="78" max="32767" attributes="0"/>
+                      <EmptySpace pref="91" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="botonEliminarIngrediente" alignment="0" pref="243" max="32767" attributes="0"/>
-                          <Component id="botonEstablecerIngrediente" alignment="0" pref="243" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="botonModificarIngrediente" pref="242" max="32767" attributes="0"/>
-                              <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="botonAniadirIngrediente" alignment="0" max="32767" attributes="0"/>
+                          <Component id="botonEliminarProveedor" linkSize="12" alignment="1" min="-2" pref="230" max="-2" attributes="0"/>
+                          <Component id="botonAniadirProveedor" linkSize="12" alignment="1" min="-2" pref="230" max="-2" attributes="0"/>
+                          <Component id="botonModificarProveedor" linkSize="12" alignment="1" min="-2" pref="230" max="-2" attributes="0"/>
+                          <Component id="botonEstablecerIngrediente" alignment="1" min="-2" pref="244" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="140" max="32767" attributes="0"/>
+                      <EmptySpace pref="80" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="botonEliminarIngrediente" linkSize="12" alignment="0" min="-2" pref="244" max="-2" attributes="0"/>
+                          <Component id="botonQuitarIngrediente" linkSize="12" alignment="0" min="-2" pref="244" max="-2" attributes="0"/>
+                          <Component id="botonModificarIngrediente" linkSize="12" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
+                          <Component id="botonAniadirIngrediente" linkSize="12" alignment="0" min="-2" pref="244" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="131" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="57" max="32767" attributes="0"/>
-                      <Component id="botonAniadirProveedor" min="-2" pref="57" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="32767" attributes="0"/>
-                      <Component id="botonEliminarProveedor" min="-2" pref="58" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="32767" attributes="0"/>
-                      <Component id="botonModificarProveedor" min="-2" pref="58" max="-2" attributes="0"/>
-                      <EmptySpace pref="77" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="botonAniadirIngrediente" min="-2" pref="58" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="32767" attributes="0"/>
-                      <Component id="botonEliminarIngrediente" min="-2" pref="58" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="32767" attributes="0"/>
-                      <Component id="botonModificarIngrediente" min="-2" pref="58" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="32767" attributes="0"/>
-                      <Component id="botonEstablecerIngrediente" min="-2" pref="58" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="61" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="botonAniadirIngrediente" min="-2" pref="58" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="botonEliminarIngrediente" min="-2" pref="58" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="botonModificarIngrediente" min="-2" pref="58" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="botonAniadirProveedor" min="-2" pref="57" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="botonEliminarProveedor" min="-2" pref="58" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="botonModificarProveedor" min="-2" pref="58" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="botonQuitarIngrediente" min="-2" pref="58" max="-2" attributes="0"/>
+                          <Component id="botonEstablecerIngrediente" min="-2" pref="58" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="61" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -483,6 +508,18 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonModificarIngredienteActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="botonQuitarIngrediente">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Quitar Ingrediente Provisto "/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor de Mano"/>
+                </Property>
+                <Property name="horizontalTextPosition" type="int" value="0"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonQuitarIngredienteActionPerformed"/>
+              </Events>
+            </Component>
             <Component class="javax.swing.JButton" name="botonEstablecerIngrediente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Establecer Ingrediente Provisto "/>
@@ -499,31 +536,6 @@
         </Container>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="botonSalir">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="34" green="3e" red="d2" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Salir"/>
-        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Cursor de Mano"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonSalirActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="botonMostrarBD">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Mostrar Base de Datos"/>
-        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Cursor de Mano"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonMostrarBDActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="titulo">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -538,5 +550,60 @@
         </Property>
       </Properties>
     </Component>
+    <Container class="javax.swing.JPanel" name="jPanel4">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="botonMostrarBD" linkSize="8" min="-2" pref="315" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="botonSalir" linkSize="8" min="-2" pref="206" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="2" attributes="0">
+                      <Component id="botonMostrarBD" alignment="2" pref="54" max="32767" attributes="0"/>
+                      <Component id="botonSalir" alignment="2" pref="54" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="botonSalir">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="34" green="3e" red="d2" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Salir"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor de Mano"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonSalirActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonMostrarBD">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Mostrar Base de Datos"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor de Mano"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonMostrarBDActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

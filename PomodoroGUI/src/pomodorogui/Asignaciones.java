@@ -45,7 +45,7 @@ public class Asignaciones extends javax.swing.JFrame {
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
     }
     
-    public void menuContienePlato(String valores){
+    public void asignarPlatosMenu(String valores){
         try {
             stmt.executeUpdate("insert into menu_contiene_plato (id_menu, cod_plato) "+
                                "values"+valores);
@@ -55,10 +55,28 @@ public class Asignaciones extends javax.swing.JFrame {
         }        
     }
     
-    public void platoContieneIngrediente(String valores){
+    public void desasignarPlatosMenu(String valores){
+        try {
+            stmt.executeUpdate("delete from menu_contiene_plato where (id_menu, cod_plato) in ("+valores+")" );
+            JOptionPane.showMessageDialog(this, "Query OK");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error");
+        }        
+    }
+    
+    public void asignarIngredientesPlato(String valores){
         try {
             stmt.executeUpdate("insert into plato_contiene_ing (cod_plato, cod_ing) "+
                                "values"+valores);
+            JOptionPane.showMessageDialog(this, "Query OK");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error");
+        }        
+    }
+    
+    public void desasignarIngredientesPlato(String valores){
+        try {
+            stmt.executeUpdate("delete from plato_contiene_ing where (cod_plato, cod_ing) in ("+valores+")" );
             JOptionPane.showMessageDialog(this, "Query OK");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Error");
@@ -84,6 +102,24 @@ public class Asignaciones extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error");
         }      
     }
+    
+    public void desasignarTarea(String valores){
+        try {
+            stmt.executeUpdate("delete from asignacion where (nom_ta, dni_emp) in ("+valores+")" ); 
+            JOptionPane.showMessageDialog(this, "Query OK");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error");
+        }      
+    }
+    
+    public void quitarIngrediente(String valores){
+        try {
+            stmt.executeUpdate("delete from provee where (dni_prov, cod_ing) in ("+valores+")" ); 
+            JOptionPane.showMessageDialog(this, "Query OK");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error");
+        }      
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -94,16 +130,16 @@ public class Asignaciones extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BotonAceptarMcP = new javax.swing.JButton();
+        BotonAceptar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        BotonAceptarMcP.setText("Aceptar");
-        BotonAceptarMcP.addActionListener(new java.awt.event.ActionListener() {
+        BotonAceptar.setText("Aceptar");
+        BotonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonAceptarMcPActionPerformed(evt);
+                BotonAceptarActionPerformed(evt);
             }
         });
 
@@ -133,7 +169,7 @@ public class Asignaciones extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(BotonAceptarMcP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(BotonAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -141,7 +177,7 @@ public class Asignaciones extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BotonAceptarMcP, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -151,36 +187,51 @@ public class Asignaciones extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BotonAceptarMcPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAceptarMcPActionPerformed
+    private void BotonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAceptarActionPerformed
         String valores = "";
-        for (int i=0; i < checks.size(); i++) {
-            if ( checks.get(i).isSelected() )
-                valores += "('"+var+"','"+checks.get(i).getText()+ "'),";
+        if (checks.size() != 0){
+            for (int i=0; i < checks.size(); i++) {
+                if ( checks.get(i).isSelected() )
+                    valores += "('"+var+"','"+checks.get(i).getText()+ "'),";
+            }
+            
+            if (valores.length() != 0){
+                valores = valores.substring(0, valores.length() - 1);
+                switch (tipo) {
+                    case 1:
+                        asignarPlatosMenu(valores);
+                        break;
+                    case 2:
+                        asignarIngredientesPlato(valores);
+                        break;
+                    case 3:
+                        establecerIngrediente(valores);
+                        break;
+                    case 4:
+                        asignarTarea(valores);
+                        break;
+                    case 5:
+                        desasignarTarea(valores);
+                        break;
+                    case 6:
+                        quitarIngrediente(valores);
+                        break;
+                    case 7:
+                        desasignarPlatosMenu(valores);
+                        break;
+                    case 8:
+                        desasignarIngredientesPlato(valores);
+                        break;
+                }
+            }
         }
-        valores = valores.substring(0, valores.length() - 1);
-        
-        switch (tipo) {
-            case 1:
-                menuContienePlato(valores);
-                break;
-            case 2:
-                platoContieneIngrediente(valores);
-                break;
-            case 3:
-                establecerIngrediente(valores);
-                break;
-            case 4:
-                asignarTarea(valores);
-                break;
-        }
-        
         this.setVisible(false);
-    }//GEN-LAST:event_BotonAceptarMcPActionPerformed
+    }//GEN-LAST:event_BotonAceptarActionPerformed
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonAceptarMcP;
+    private javax.swing.JButton BotonAceptar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

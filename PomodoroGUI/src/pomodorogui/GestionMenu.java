@@ -35,8 +35,7 @@ public class GestionMenu {
         }
     }
     
-    
-    public void insertarPlatosMenu() throws SQLException{
+    public void asignarPlatosMenu() throws SQLException{
         String valores = "", salida = "", menu = "";
         
         ArrayList<String> menusList = new ArrayList();
@@ -59,7 +58,30 @@ public class GestionMenu {
         Asignaciones asig = new Asignaciones(platos, menu, stmt, 1);
     }
     
-    public void insertarIngredientePlato() throws SQLException{
+    public void desasignarPlatosMenu() throws SQLException{
+        String valores = "", salida = "", menu = "";
+        
+        ArrayList<String> menusList = new ArrayList();
+        rs=stmt.executeQuery("select id_menu from Menu where disponibilidad = 'SI'");
+        while ( rs.next() ){
+            menusList.add( rs.getString(1) );
+        }
+        String[] menus = new String[menusList.size()];
+        menus = menusList.toArray(menus);
+        menu = (String) JOptionPane.showInputDialog(null,"Selecciona un menú", "Menús",
+                                            JOptionPane.QUESTION_MESSAGE,null,menus, menus[0]);
+        
+        ArrayList<String> platos = new ArrayList();
+        rs=stmt.executeQuery("select cod_plato from Plato where disponibilidad = 'SI' and cod_plato in "
+                           + "(select cod_plato from menu_contiene_plato where id_menu = '"+menu+"')");
+        while ( rs.next() ){
+            platos.add( rs.getString(1) );
+        }
+        
+        Asignaciones asig = new Asignaciones(platos, menu, stmt, 7);
+    }
+    
+    public void asignarIngredientePlato() throws SQLException{
         String valores = "", salida = "", plato = "";
         
         ArrayList<String> platosList = new ArrayList();
@@ -73,7 +95,7 @@ public class GestionMenu {
                                             JOptionPane.QUESTION_MESSAGE,null,platos, platos[0]);
         
         ArrayList<String> ing = new ArrayList();
-        rs=stmt.executeQuery("select cod_ing from Ingrediente and cod_ing not in "
+        rs=stmt.executeQuery("select cod_ing from Ingrediente where cod_ing not in "
                            + "(select cod_ing from plato_contiene_ing where cod_plato = '"+plato+"')");
         while ( rs.next() ){
             ing.add( rs.getString(1) );
@@ -82,4 +104,31 @@ public class GestionMenu {
         Asignaciones pci = new Asignaciones(ing, plato, stmt, 2);
         pci.setVisible(true);
     }
+    
+    public void desasignarIngredientesPlato() throws SQLException{
+        String valores = "", salida = "", plato = "";
+        
+        ArrayList<String> platosList = new ArrayList();
+        rs=stmt.executeQuery("select cod_plato from Plato where disponibilidad = 'SI'");
+        while ( rs.next() ){
+            platosList.add( rs.getString(1) );
+        }
+        String[] platos = new String[platosList.size()];
+        platos = platosList.toArray(platos);
+        plato = (String) JOptionPane.showInputDialog(null,"Selecciona un plato", "Platos",
+                                            JOptionPane.QUESTION_MESSAGE,null,platos, platos[0]);
+        
+        ArrayList<String> ing = new ArrayList();
+        rs=stmt.executeQuery("select cod_ing from Ingrediente where cod_ing in "
+                           + "(select cod_ing from plato_contiene_ing where cod_plato = '"+plato+"')");
+        while ( rs.next() ){
+            ing.add( rs.getString(1) );
+        }
+        
+        Asignaciones pci = new Asignaciones(ing, plato, stmt, 8);
+        pci.setVisible(true);
+    }
+    
+    
+    
 }

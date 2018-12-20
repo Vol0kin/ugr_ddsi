@@ -25,6 +25,7 @@ public class GestionEmpleados {
         this.rs = rs;
     }
 
+    
     public void aniadirEmpleado(PomodoroGUI pomGUI) {
         String db = "";
         try {
@@ -91,13 +92,36 @@ public class GestionEmpleados {
                                             JOptionPane.QUESTION_MESSAGE,null,menus, menus[0]);
         
         ArrayList<String> platos = new ArrayList();
-        rs=stmt.executeQuery("select dni_emp from Empleado and dni_emp not in "
+        rs=stmt.executeQuery("select dni_emp from Empleado where dni_emp not in "
                            + "(select dni_emp from asignacion where nom_ta = '"+menu+"')");
         while ( rs.next() ){
             platos.add( rs.getString(1) );
         }
         
         Asignaciones asig = new Asignaciones(platos, menu, stmt, 4);
+    }
+     
+    public void desasignarEmpleadoTarea() throws SQLException{
+        String valores = "", salida = "", menu = "";
+        
+        ArrayList<String> menusList = new ArrayList();
+        rs=stmt.executeQuery("select nom_ta from Tarea");
+        while ( rs.next() ){
+            menusList.add( rs.getString(1) );
+        }
+        String[] menus = new String[menusList.size()];
+        menus = menusList.toArray(menus);
+        menu = (String) JOptionPane.showInputDialog(null,"Selecciona una Tarea", "Tarea",
+                                            JOptionPane.QUESTION_MESSAGE,null,menus, menus[0]);
+        
+        ArrayList<String> platos = new ArrayList();
+        rs=stmt.executeQuery("select dni_emp from Empleado where dni_emp in "
+                           + "(select dni_emp from asignacion where nom_ta = '"+menu+"')");
+        while ( rs.next() ){
+            platos.add( rs.getString(1) );
+        }
+        
+        Asignaciones asig = new Asignaciones(platos, menu, stmt, 5);
     }
   
 }
