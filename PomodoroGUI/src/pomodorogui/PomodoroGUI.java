@@ -637,43 +637,23 @@ public class PomodoroGUI extends javax.swing.JFrame {
 
 
     private void botonAniadirProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadirProveedorActionPerformed
-        String db = "";
-        try {
-            db = pomDB.insertarTabla("Proveedor");
-            JOptionPane.showMessageDialog(this, db);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al insertar proveedor");
-        }
+        
+        pomDB.gProv.insertarProveedor(this);
     }//GEN-LAST:event_botonAniadirProveedorActionPerformed
 
     private void botonEliminarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarProveedorActionPerformed
-        String db = "";
-        try {
-            db = pomDB.eliminarTabla("Proveedor");
-            JOptionPane.showMessageDialog(this, db);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al eliminar proveedor");
-        }
+        
+        pomDB.gProv.eliminarProveedor(this);
     }//GEN-LAST:event_botonEliminarProveedorActionPerformed
 
     private void botonModificarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarProveedorActionPerformed
-        String db = "";
-        try {
-            db = pomDB.modificarTabla("Proveedor");
-            JOptionPane.showMessageDialog(this, db);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al modificar proveedor");
-        }
+        
+        pomDB.gProv.modificarProveedor(this);
     }//GEN-LAST:event_botonModificarProveedorActionPerformed
 
     private void botonAniadirIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadirIngredienteActionPerformed
-        String db = "";
-        try {
-            db = pomDB.insertarTabla("Ingrediente");
-            JOptionPane.showMessageDialog(this, db);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al añadir ingrediente");
-        }
+        
+        pomDB.gProv.establecerIngredienteProvisto(this);
     }//GEN-LAST:event_botonAniadirIngredienteActionPerformed
 
     private void botonEliminarIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarIngredienteActionPerformed
@@ -723,11 +703,8 @@ public class PomodoroGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_botonDesasignarMenuActionPerformed
 
     private void botonEstablecerIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEstablecerIngredienteActionPerformed
-        try {
-            pomDB.gProv.establecerIngrediente();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al establecer ingredientes provistos");
-        }
+    
+        pomDB.gProv.provee(this);
     }//GEN-LAST:event_botonEstablecerIngredienteActionPerformed
 
     /**

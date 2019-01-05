@@ -7,6 +7,7 @@ package pomodorogui;
 import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import static pomodorogui.PomodoroGUI.pomDB;
 
 /**
  *
@@ -23,55 +24,45 @@ public class GestionProveedor
         this.rs = rs;
     }
     
-    public void insertarProveedor(Connection conn)
+    public void insertarProveedor(PomodoroGUI pomGUI)
     {
+        String consulta = "";
+        
         try
         {
-            String consulta = "INSERT INTO Proveedor"
-                              + " values ('11111111A', 'Jose Lopez Perez', '123456789', 'uncorreo@gmail.com', 'Empresa1', '22222222B', 'congelados', '25')";
-
-            stmt = conn.createStatement();
-            resultado = stmt.executeUpdate(consulta);
-
-        } catch(Exception e) {
-            System.out.println(e);
+            consulta = pomDB.insertarTabla("Proveedor");
+            JOptionPane.showMessageDialog(pomGUI, consulta);
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(pomGUI, "Error al insertar un proveedor");
         }
     }
 
-    public void eliminarProveedor(Connection conn)
+    public void eliminarProveedor(PomodoroGUI pomGUI)
     {
+        String consulta = "";
+        
         try
         {
-            String consulta = "DELETE FROM Proveedor WHERE dni = '11111111A'";
-
-            stmt = conn.createStatement();
-            stmt.executeUpdate(consulta);
-
-        } catch(Exception e) {
-            System.out.println(e);
+            consulta = pomDB.eliminarTabla("Proveedor");
+            JOptionPane.showMessageDialog(pomGUI, consulta);
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(pomGUI, "Error al eliminal al proveedor");
         }
     }
 
-    public void modificarProveedor(Connection conn, String dato)
+    public void modificarProveedor(PomodoroGUI pomGUI)
     {
+        String consulta = "";
+        
         try
         {
-            buscarProveedor(conn, dato);
-            String nom_nuevo = "jose lopez perez", tel_nuevo = "958111111", correo_nuevo = "modif@gmail.com", emp_nueva = "nueva_empresa", tipo_nuevo = "pescado", edad_nueva = "45";
-
-            String consulta = "UPDATE Proveedor SET nombre_apellidos = '" + nom_nuevo + "'"
-                                                 + ", telefono = '" + tel_nuevo + "'"
-                                                 + ", correo = '" + correo_nuevo + "'"
-                                                 + ", nombre_empresa = '" + emp_nueva + "'"
-                                                 + ", tipo_producto = '" + tipo_nuevo + "'"
-                                                 + ", edad = '" + edad_nueva + "'"
-                                                 + "WHERE dni = '" + dato + "'";
-
-            PreparedStatement updateEXP = conn.prepareStatement(consulta);
-            updateEXP.executeUpdate();
-
-        } catch(Exception e) {
-            System.out.println(e);
+            consulta = pomDB.modificarTabla("Proveedor");
+            JOptionPane.showMessageDialog(pomGUI, consulta);
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(pomGUI, "Error al modificar un proveedor");
         }
     }
 
@@ -95,48 +86,58 @@ public class GestionProveedor
         }
     }
 
-    public void establecerIngredienteProvisto(Connection conn)
+    public void establecerIngredienteProvisto(PomodoroGUI pomGUI)
     {
+        String consulta = "";
+        
         try
         {
-            String consulta = "INSERT INTO Ingrediente"
-                              + " values ('00000', 'Fresco', 'Verdura', '25')";
-
-            stmt = conn.createStatement();
-            resultado = stmt.executeUpdate(consulta);
-
-        } catch(Exception e) {
-            System.out.println(e);
+            consulta = pomDB.insertarTabla("Ingrediente");
+            JOptionPane.showMessageDialog(pomGUI, consulta);
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(pomGUI, "Error al insertar el ingrediente");
         }
     }
     
-    public void establecerIngrediente() throws SQLException
-        {
+    public void provee(PomodoroGUI pomGUI)
+    {
         String valores = "", salida = "", prov = "";
         
-        ArrayList<String> provList = new ArrayList();
-        rs=stmt.executeQuery("select dni from Proveedor");
-        while ( rs.next() ){
-            provList.add( rs.getString(1) );
+        try
+        {
+            ArrayList<String> lista_prov = new ArrayList();
+
+            rs=stmt.executeQuery("select dni from Proveedor");
+
+            while (rs.next())
+                lista_prov.add(rs.getString(1));
+
+            String[] proveedor = new String[lista_prov.size()];
+            proveedor = lista_prov.toArray(proveedor);
+
+            prov = (String) JOptionPane.showInputDialog(null,"Selecciona un proveedor", "Proveedor",
+                    JOptionPane.QUESTION_MESSAGE,null,proveedor, proveedor[0]);
+
+            ArrayList<String> ing = new ArrayList();
+
+            rs=stmt.executeQuery("select cod_ing from Ingrediente");
+
+            while (rs.next())
+                ing.add(rs.getString(1));
+            
+            Asignaciones asig = new Asignaciones(ing, prov, stmt, 3);
+            asig.setVisible(true);
+
+            //asig.establecerIngrediente(proveedor+ing.get(0));
+            
+        } catch(SQLException e) {
+            JOptionPane.showMessageDialog(pomGUI, "Error al establecer relación entre proveedor e ingrediente");
         }
-        String[] provs = new String[provList.size()];
-        provs = provList.toArray(provs);
-        prov = (String) JOptionPane.showInputDialog(null,"Selecciona un proveedor", "Proveedores",
-                                            JOptionPane.QUESTION_MESSAGE,null,provs, provs[0]);
-        
-        ArrayList<String> ing = new ArrayList();
-        rs=stmt.executeQuery("select cod_ing from Ingrediente where cod_ing not in "
-                           + "(select cod_ing from provee where dni_prov = '"+prov+"')");
-        while ( rs.next() ){
-            ing.add( rs.getString(1) );
-        }
-        
-        Asignaciones ei = new Asignaciones(ing, prov, stmt, 3);
-        ei.setVisible(true);
-    }    
+    }   
     
     public void quitarIngrediente() throws SQLException
-        {
+    {
         String valores = "", salida = "", prov = "";
         
         ArrayList<String> provList = new ArrayList();
