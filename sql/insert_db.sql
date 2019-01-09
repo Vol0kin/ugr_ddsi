@@ -1,5 +1,5 @@
 -- Creacion de sentencias SQL para insertar filas en las tablas
-
+USE pomodoro;
 -- Insercion de empleados
 
 INSERT INTO Empleado VALUES ('78934567R', 'Juan Lopez Vidal', STR_TO_DATE('31/12/1981', '%d/%m/%Y'), '678453275', 'Calle Salmón, 103', 'casado', 'jlopezv@gmail.com', 'Ingenieria de lavado de platos', '1234567890123456789', '123456789023');
