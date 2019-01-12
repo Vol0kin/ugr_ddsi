@@ -391,50 +391,41 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="91" max="32767" attributes="0"/>
+                      <EmptySpace pref="94" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="botonEliminarProveedor" linkSize="12" alignment="1" min="-2" pref="230" max="-2" attributes="0"/>
                           <Component id="botonAniadirProveedor" linkSize="12" alignment="1" min="-2" pref="230" max="-2" attributes="0"/>
                           <Component id="botonModificarProveedor" linkSize="12" alignment="1" min="-2" pref="230" max="-2" attributes="0"/>
-                          <Component id="botonEstablecerIngrediente" alignment="1" min="-2" pref="244" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="80" max="32767" attributes="0"/>
+                      <EmptySpace pref="84" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="botonEliminarIngrediente" linkSize="12" alignment="0" min="-2" pref="244" max="-2" attributes="0"/>
-                          <Component id="botonQuitarIngrediente" linkSize="12" alignment="0" min="-2" pref="244" max="-2" attributes="0"/>
-                          <Component id="botonModificarIngrediente" linkSize="12" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
-                          <Component id="botonAniadirIngrediente" linkSize="12" alignment="0" min="-2" pref="244" max="-2" attributes="0"/>
+                          <Component id="botonAniadirIngrediente" linkSize="12" min="-2" pref="244" max="-2" attributes="0"/>
+                          <Component id="botonEstablecerIngrediente" min="-2" pref="244" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="131" max="32767" attributes="0"/>
+                      <EmptySpace pref="134" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="61" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="botonAniadirIngrediente" min="-2" pref="58" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="botonEliminarIngrediente" min="-2" pref="58" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="botonModificarIngrediente" min="-2" pref="58" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace pref="75" max="32767" attributes="0"/>
                               <Component id="botonAniadirProveedor" min="-2" pref="57" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="botonEliminarProveedor" min="-2" pref="58" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                               <Component id="botonModificarProveedor" min="-2" pref="58" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
+                              <Component id="botonAniadirIngrediente" min="-2" pref="58" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="botonEstablecerIngrediente" min="-2" pref="58" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="botonQuitarIngrediente" min="-2" pref="58" max="-2" attributes="0"/>
-                          <Component id="botonEstablecerIngrediente" min="-2" pref="58" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="61" max="32767" attributes="0"/>
+                      <EmptySpace pref="86" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -484,40 +475,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAniadirIngredienteActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="botonEliminarIngrediente">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Eliminar Ingrediente"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor de Mano"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonEliminarIngredienteActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="botonModificarIngrediente">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Modificar Ingrediente"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor de Mano"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonModificarIngredienteActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="botonQuitarIngrediente">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Quitar Ingrediente Provisto "/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor de Mano"/>
-                </Property>
-                <Property name="horizontalTextPosition" type="int" value="0"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonQuitarIngredienteActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botonEstablecerIngrediente">
