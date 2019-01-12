@@ -125,11 +125,22 @@ class PomodoroDB{
         
         rs=stmt.executeQuery("SELECT COLUMN_NAME FROM information_schema.KEY_COLUMN_USAGE "+
                              "WHERE TABLE_NAME = '"+tabla+"' AND CONSTRAINT_NAME = 'PRIMARY'");
+        
+        rs.next();
+        campos = rs.getString(1);
+        
+        rs = stmt.executeQuery("SELECT " + campos + " FROM " + tabla);
+        
         while (rs.next()){
-            valor = JOptionPane.showInputDialog("Insertar valor para "+rs.getString(1));
-            campos += rs.getString(1)+" = '"+valor+"' and ";
+            valoresList.add(rs.getString(1));
         }
-        campos = campos.substring(0, campos.length() - 5);
+        
+        String[] valores = new String[valoresList.size()];
+        valores = valoresList.toArray(valores);
+        eleccion = (String) JOptionPane.showInputDialog(null, "Selecciona el elemento a modificar", "Elemento...", 
+                                                        JOptionPane.QUESTION_MESSAGE, null, valores, valores[0]);
+        campos += " = " + eleccion;
+        valoresList.clear();
                 
         rs=stmt.executeQuery("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS "+
                              "where table_name = '"+tabla+"' and COLUMN_KEY <> 'PRI'");
@@ -137,7 +148,8 @@ class PomodoroDB{
             valoresList.add(rs.getString(1));
         }
         
-        String[] valores = new String[valoresList.size()];
+        
+        valores = new String[valoresList.size()];
         valores = valoresList.toArray(valores);
         eleccion = (String) JOptionPane.showInputDialog(null,"Selecciona la columna a modificar", "Tablas...",
                                             JOptionPane.QUESTION_MESSAGE,null,valores, valores[0]);

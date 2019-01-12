@@ -55,7 +55,7 @@ DELIMITER ;
 DROP TRIGGER IF EXISTS ingrediente_insertar;
 
 DELIMITER |
-CREATE TRIGGER ingrediente_insertar BEFORE INSERT ON Plato
+CREATE TRIGGER ingrediente_insertar BEFORE INSERT ON Ingrediente
 FOR EACH ROW
 	BEGIN
 		IF NEW.cantidad < 1 OR NEW.cantidad > 500 THEN
