@@ -141,7 +141,7 @@ public class GestionMenu {
             platos.add( rs.getString(1) );
         }
         
-        Asignaciones asig = new Asignaciones(platos, menu, stmt, 7);
+        Asignaciones asig = new Asignaciones(platos, menu, stmt, 6);
     }
     
     public void asignarIngredientePlato() throws SQLException{
@@ -196,7 +196,7 @@ public class GestionMenu {
             ing.add( rs.getString(1) );
         }
         
-        Asignaciones pci = new Asignaciones(ing, plato, stmt, 8);
+        Asignaciones pci = new Asignaciones(ing, plato, stmt, 7);
         pci.setVisible(true);
     }
     

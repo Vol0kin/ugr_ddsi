@@ -72,7 +72,7 @@ class PomodoroDB{
                 a_insertar = JOptionPane.showInputDialog("Insertar valor para "+ rs.getString(1));
 
                 if (("".equals(a_insertar) && "NO".equals(isNull(tabla, rs.getString(1)))) || null == a_insertar)
-                    return "Error al insertar los datos";
+                    return "Operacion cancelada";
                 else
                     valores += "'" + a_insertar + "',";
             }
@@ -83,7 +83,7 @@ class PomodoroDB{
             stmt.executeUpdate("insert into "+tabla+" values("+valores+")");
             salida = "Datos insertados con exito.";
         } catch (SQLException ex) {
-            salida = "Error";
+            salida = "Error al insertar los datos.";
         }
         return salida;
     }
@@ -97,23 +97,38 @@ class PomodoroDB{
     
        
     public String eliminarTabla(String tabla) throws SQLException{
-        String valores = "", salida = "", valor = "", campos = "";
+        String valor = "", salida = "", campo = "";
+        ArrayList<String> valoresList = new ArrayList<>();
         
+        // Seleccionar clave primaria        
         rs=stmt.executeQuery("SELECT COLUMN_NAME FROM information_schema.KEY_COLUMN_USAGE "+
                              "WHERE TABLE_NAME = '"+tabla+"' AND CONSTRAINT_NAME = 'PRIMARY'");
-        while (rs.next()){
-            valor = JOptionPane.showInputDialog("Insertar valor para "+rs.getString(1));
-            campos += rs.getString(1)+",";
-            valores += "'"+valor+"',";
+        
+        // Obtener nombre de la clave primaria
+        rs.next();
+        campo = rs.getString(1);
+        
+        // Obtener la columna de la clave primaria
+        rs = stmt.executeQuery("SELECT " + campo + " FROM " + tabla);
+        
+        while (rs.next()) {
+            valoresList.add(rs.getString(1));
         }
-        campos = campos.substring(0, campos.length() - 1);
-        valores = valores.substring(0, valores.length() - 1);
+        
+        String[] valoresArray = new String[valoresList.size()];
+        valoresArray = valoresList.toArray(valoresArray);
+        valor = (String) JOptionPane.showInputDialog(null, "Selecciona el elemento a eliminar", "Elemento...", 
+                                                        JOptionPane.QUESTION_MESSAGE, null, valoresArray, valoresArray[0]);
+        
+        if (valor == null) {
+            return "Operacion cancelada";
+        }
         
         try {
-            stmt.executeUpdate("delete from "+tabla+" where ("+campos+") in (("+valores+"))");
-            salida = "Informacion eliminada con exito.";
+            stmt.executeUpdate("DELETE FROM " + tabla + " WHERE " + campo + " = '" + valor + "'");
+            salida = "Datos eliminados con exito.";
         } catch (SQLException ex) {
-            salida = "Error";
+            salida = "Error al eliminar los datos.";
         }
         return salida;
     }
@@ -137,9 +152,13 @@ class PomodoroDB{
         
         String[] valores = new String[valoresList.size()];
         valores = valoresList.toArray(valores);
-        eleccion = (String) JOptionPane.showInputDialog(null, "Selecciona el elemento a modificar", "Elemento...", 
+        valor = (String) JOptionPane.showInputDialog(null, "Selecciona el elemento a modificar", "Elemento...", 
                                                         JOptionPane.QUESTION_MESSAGE, null, valores, valores[0]);
-        campos += " = " + eleccion;
+        
+        if (valor == null) {
+            return "Operacion cancelada";
+        }
+        
         valoresList.clear();
                 
         rs=stmt.executeQuery("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS "+
@@ -153,6 +172,10 @@ class PomodoroDB{
         valores = valoresList.toArray(valores);
         eleccion = (String) JOptionPane.showInputDialog(null,"Selecciona la columna a modificar", "Tablas...",
                                             JOptionPane.QUESTION_MESSAGE,null,valores, valores[0]);
+        
+        if (eleccion == null) {
+            return "Operacion cancelada";
+        }
         
         
         if ("estadocivil".equals(eleccion)){
@@ -173,10 +196,10 @@ class PomodoroDB{
         
         try {
             stmt.executeUpdate("update "+tabla+" set "+eleccion+" = '"+a_insertar+"' "+
-                                "where "+campos);
+                                "where "+campos + " = '" + valor + "'");
             salida = "Datos modificados con exito.";
         } catch (SQLException ex) {
-            salida = "Error";
+            salida = "Error al modificar los datos.";
         }
         return salida;
     }

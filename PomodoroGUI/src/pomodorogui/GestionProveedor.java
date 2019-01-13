@@ -107,10 +107,7 @@ public class GestionProveedor
                 ing.add(rs.getString(1));
             
             Asignaciones asig = new Asignaciones(ing, prov, stmt, 3);
-            asig.setVisible(true);
-
-            //asig.establecerIngrediente(proveedor+ing.get(0));
-            
+            asig.setVisible(true);            
         } catch(SQLException e) {
             JOptionPane.showMessageDialog(pomGUI, "Error al establecer relación entre proveedor e ingrediente");
         }

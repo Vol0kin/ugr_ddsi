@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package pomodorogui;
+import javax.swing.JFrame;
 
 /**
  *
@@ -17,6 +18,9 @@ public class Tablas extends javax.swing.JFrame {
     public Tablas() {
         initComponents();
         setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
+        
+        // Con esto se evita cerrar la aplicacion al cerrar la ventana "hijo"
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**

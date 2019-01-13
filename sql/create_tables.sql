@@ -8,8 +8,7 @@ CREATE TABLE Empleado (
 	fecha_nac DATE NOT NULL,
 	telefono VARCHAR(20) NOT NULL,
 	direccion VARCHAR(120) NOT NULL,
-	estadocivil VARCHAR(10) NOT NULL
-		CHECK (estadocivil IN ('soltero', 'casado', 'divorciado', 'viudo')),
+	estadocivil VARCHAR(10) NOT NULL,
 	correo VARCHAR(60),
 	formacion VARCHAR(200) NOT NULL,
 	cuenta_bancaria VARCHAR(20) NOT NULL,
@@ -24,16 +23,16 @@ CREATE TABLE Tarea(
 
 CREATE TABLE Menu (
 	id_menu VARCHAR(4) PRIMARY KEY,
-	precio FLOAT(5,2) NOT NULL CHECK (precio >= 0),
-	disponibilidad VARCHAR(2) NOT NULL CHECK (disponibilidad IN ('SI', 'NO'))
+	precio FLOAT(5,2) NOT NULL,
+	disponibilidad VARCHAR(2) NOT NULL
 );
 
 CREATE TABLE Plato (
 	cod_plato VARCHAR(4) PRIMARY KEY,
 	nombre VARCHAR(25) NOT NULL,
-	precio FLOAT(5,2) NOT NULL CHECK (precio >= 0),
+	precio FLOAT(5,2) NOT NULL,
 	productos_alergenos VARCHAR(50) NOT NULL,
-	disponibilidad VARCHAR(2) NOT NULL CHECK (disponibilidad IN ('SI', 'NO'))
+	disponibilidad VARCHAR(2) NOT NULL
 );
 
 -- Subsistema Gestion de Proveedores
@@ -54,7 +53,7 @@ CREATE TABLE Ingrediente(
 	cod_ing varchar(5) PRIMARY KEY,
 	tipo varchar(20) NOT NULL,
 	nombre varchar(25) NOT NULL,
-	cantidad integer(3) NOT NULL CHECK(1 <= cantidad <= 500)
+	cantidad integer(3) NOT NULL
 );
 
 -- --------------------------------------------------------------------------------------------------------------

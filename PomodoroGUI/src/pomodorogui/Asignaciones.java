@@ -43,24 +43,27 @@ public class Asignaciones extends javax.swing.JFrame {
         add(jPanel1, BorderLayout.LINE_START);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        
+        // Con esto se evita cerrar la aplicacion al cerrar la ventana "hijo"
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     
     public void asignarPlatosMenu(String valores){
         try {
             stmt.executeUpdate("insert into menu_contiene_plato (id_menu, cod_plato) "+
                                "values"+valores);
-            JOptionPane.showMessageDialog(this, "Query OK");
+            JOptionPane.showMessageDialog(this, "Asignacion de plato a menu correcta.");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error");
+            JOptionPane.showMessageDialog(this, "Error al asignar plato a menu.");
         }        
     }
     
     public void desasignarPlatosMenu(String valores){
         try {
             stmt.executeUpdate("delete from menu_contiene_plato where (id_menu, cod_plato) in ("+valores+")" );
-            JOptionPane.showMessageDialog(this, "Query OK");
+            JOptionPane.showMessageDialog(this, "Desasignacion de platos a menu correcta.");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error");
+            JOptionPane.showMessageDialog(this, "Error al desasignar platos de menu.");
         }        
     }
     
@@ -68,18 +71,18 @@ public class Asignaciones extends javax.swing.JFrame {
         try {
             stmt.executeUpdate("insert into plato_contiene_ing (cod_plato, cod_ing) "+
                                "values"+valores);
-            JOptionPane.showMessageDialog(this, "Query OK");
+            JOptionPane.showMessageDialog(this, "Asignacion de ingredientes a plato correcta.");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error");
+            JOptionPane.showMessageDialog(this, "Error al asignar ingrediente a plato.");
         }        
     }
     
     public void desasignarIngredientesPlato(String valores){
         try {
             stmt.executeUpdate("delete from plato_contiene_ing where (cod_plato, cod_ing) in ("+valores+")" );
-            JOptionPane.showMessageDialog(this, "Query OK");
+            JOptionPane.showMessageDialog(this, "Desasignacion de ingredientes a plato correcta.");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error");
+            JOptionPane.showMessageDialog(this, "Error al desasignar ingredientes de plato.");
         }        
     }
     
@@ -87,9 +90,9 @@ public class Asignaciones extends javax.swing.JFrame {
         try {
             stmt.executeUpdate("insert into provee (dni_prov, cod_ing) "+
                                "values"+valores);
-            JOptionPane.showMessageDialog(this, "Query OK");
+            JOptionPane.showMessageDialog(this, "Asignacion de proveedor a ingredientes correcta.");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error");
+            JOptionPane.showMessageDialog(this, "Error al asignar proveedor a ingredientes.");
         }      
     }
     
@@ -97,27 +100,18 @@ public class Asignaciones extends javax.swing.JFrame {
         try {
             stmt.executeUpdate("insert into asignacion (nom_ta, dni_emp) "+
                                "values"+valores);
-            JOptionPane.showMessageDialog(this, "Query OK");
+            JOptionPane.showMessageDialog(this, "Asignada tarea a empleados correctamente.");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error");
+            JOptionPane.showMessageDialog(this, "Error al asignar tarea a empleados.");
         }      
     }
     
     public void desasignarTarea(String valores){
         try {
             stmt.executeUpdate("delete from asignacion where (nom_ta, dni_emp) in ("+valores+")" ); 
-            JOptionPane.showMessageDialog(this, "Query OK");
+            JOptionPane.showMessageDialog(this, "Desasignacion de tarea a empleados correcta.");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error");
-        }      
-    }
-    
-    public void quitarIngrediente(String valores){
-        try {
-            stmt.executeUpdate("delete from provee where (dni_prov, cod_ing) in ("+valores+")" ); 
-            JOptionPane.showMessageDialog(this, "Query OK");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error");
+            JOptionPane.showMessageDialog(this, "Error al desasignar la tarea a los empleados.");
         }      
     }
 
@@ -214,12 +208,9 @@ public class Asignaciones extends javax.swing.JFrame {
                         desasignarTarea(valores);
                         break;
                     case 6:
-                        quitarIngrediente(valores);
-                        break;
-                    case 7:
                         desasignarPlatosMenu(valores);
                         break;
-                    case 8:
+                    case 7:
                         desasignarIngredientesPlato(valores);
                         break;
                 }
