@@ -81,7 +81,7 @@ class PomodoroDB{
         
         try {
             stmt.executeUpdate("insert into "+tabla+" values("+valores+")");
-            salida = "Query OK";
+            salida = "Datos insertados con exito.";
         } catch (SQLException ex) {
             salida = "Error";
         }
@@ -111,7 +111,7 @@ class PomodoroDB{
         
         try {
             stmt.executeUpdate("delete from "+tabla+" where ("+campos+") in (("+valores+"))");
-            salida = "Query OK";
+            salida = "Informacion eliminada con exito.";
         } catch (SQLException ex) {
             salida = "Error";
         }
@@ -174,7 +174,7 @@ class PomodoroDB{
         try {
             stmt.executeUpdate("update "+tabla+" set "+eleccion+" = '"+a_insertar+"' "+
                                 "where "+campos);
-            salida = "Query OK";
+            salida = "Datos modificados con exito.";
         } catch (SQLException ex) {
             salida = "Error";
         }

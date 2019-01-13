@@ -481,7 +481,7 @@ public class PomodoroGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonAniadirEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadirEmpleadoActionPerformed
-        pomDB.gEmp.aniadirEmpleado(this);
+        pomDB.gEmp.insertarEmpleado(this);
     }//GEN-LAST:event_botonAniadirEmpleadoActionPerformed
 
     private void botonMostrarBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarBDActionPerformed
@@ -510,7 +510,7 @@ public class PomodoroGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_botonAsignarTareaActionPerformed
 
     private void botonAniadirTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadirTareaActionPerformed
-        pomDB.gEmp.aniadirTarea(this);
+        pomDB.gEmp.insertarTarea(this);
     }//GEN-LAST:event_botonAniadirTareaActionPerformed
 
     private void botonEliminarTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarTareaActionPerformed
@@ -531,57 +531,27 @@ public class PomodoroGUI extends javax.swing.JFrame {
 
 
     private void botonAniadirPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadirPlatoActionPerformed
-        pomDB.gMenu.aniadirPlato(this);
+        pomDB.gMenu.insertarPlato(this);
     }//GEN-LAST:event_botonAniadirPlatoActionPerformed
 
     private void botonEliminarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarPlatoActionPerformed
-        String salida = "";
-        try {
-            salida = pomDB.eliminarTabla("Plato");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al eliminar plato");
-        }
-        JOptionPane.showMessageDialog(this, salida);
+        pomDB.gMenu.eliminarPlato(this);
     }//GEN-LAST:event_botonEliminarPlatoActionPerformed
 
     private void botonModificarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarPlatoActionPerformed
-        String db = "";
-        try {
-            db = pomDB.modificarTabla("Plato");
-            JOptionPane.showMessageDialog(this, db);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al modificar plato");
-        }
+        pomDB.gMenu.modificarPlato(this);
     }//GEN-LAST:event_botonModificarPlatoActionPerformed
 
     private void botonModificarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarMenuActionPerformed
-        String db = "";
-        try {
-            db = pomDB.modificarTabla("Menu");
-            JOptionPane.showMessageDialog(this, db);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al modificar menú");
-        }
+        pomDB.gMenu.modificarMenu(this);
     }//GEN-LAST:event_botonModificarMenuActionPerformed
 
     private void botonEliminarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarMenuActionPerformed
-        String salida = "";
-        try {
-            salida = pomDB.eliminarTabla("Menu");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al eliminar menú");
-        }
-        JOptionPane.showMessageDialog(this, salida);
+        pomDB.gMenu.eliminarMenu(this);
     }//GEN-LAST:event_botonEliminarMenuActionPerformed
 
     private void botonAniadirMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadirMenuActionPerformed
-        String db = "";
-        try {
-            db = pomDB.insertarTabla("Menu");
-            JOptionPane.showMessageDialog(this, db);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al añadir menú");
-        }
+        pomDB.gMenu.insertarMenu(this);
     }//GEN-LAST:event_botonAniadirMenuActionPerformed
 
     private void botonAsignarIngredientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAsignarIngredientesActionPerformed
@@ -618,7 +588,7 @@ public class PomodoroGUI extends javax.swing.JFrame {
 
     private void botonAniadirIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadirIngredienteActionPerformed
         
-        pomDB.gProv.establecerIngredienteProvisto(this);
+        pomDB.gProv.insertarIngrediente(this);
     }//GEN-LAST:event_botonAniadirIngredienteActionPerformed
 
     

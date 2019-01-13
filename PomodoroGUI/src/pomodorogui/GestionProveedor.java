@@ -26,7 +26,7 @@ public class GestionProveedor
     
     public void insertarProveedor(PomodoroGUI pomGUI)
     {
-        String consulta = "";
+        String consulta;
         
         try
         {
@@ -40,7 +40,7 @@ public class GestionProveedor
 
     public void eliminarProveedor(PomodoroGUI pomGUI)
     {
-        String consulta = "";
+        String consulta;
         
         try
         {
@@ -54,7 +54,7 @@ public class GestionProveedor
 
     public void modificarProveedor(PomodoroGUI pomGUI)
     {
-        String consulta = "";
+        String consulta;
         
         try
         {
@@ -66,27 +66,7 @@ public class GestionProveedor
         }
     }
 
-    public void buscarProveedor(Connection conn, String dato)
-    {
-        try
-        {
-            String consulta = "SELECT * FROM Proveedor WHERE dni = '" + dato + "'";
-
-            rs = stmt.executeQuery(consulta);
-
-            if (stmt.execute(consulta))
-                rs = stmt.getResultSet();
-
-            while(rs.next())
-                System.out.println(rs.getString(1)+","+rs.getString(2)+","+rs.getString(3)+","+rs.getString(4)+","+rs.getString(5)+","+rs.getString(6)+","+rs.getString(7)+","+rs.getInt(8));
-
-            rs.close();
-        } catch(Exception e) {
-            System.out.println(e);
-        }
-    }
-
-    public void establecerIngredienteProvisto(PomodoroGUI pomGUI)
+     public void insertarIngrediente(PomodoroGUI pomGUI)
     {
         String consulta = "";
         
@@ -134,30 +114,5 @@ public class GestionProveedor
         } catch(SQLException e) {
             JOptionPane.showMessageDialog(pomGUI, "Error al establecer relación entre proveedor e ingrediente");
         }
-    }   
-    
-    public void quitarIngrediente() throws SQLException
-    {
-        String valores = "", salida = "", prov = "";
-        
-        ArrayList<String> provList = new ArrayList();
-        rs=stmt.executeQuery("select dni from Proveedor");
-        while ( rs.next() ){
-            provList.add( rs.getString(1) );
-        }
-        String[] provs = new String[provList.size()];
-        provs = provList.toArray(provs);
-        prov = (String) JOptionPane.showInputDialog(null,"Selecciona un proveedor", "Proveedores",
-                                            JOptionPane.QUESTION_MESSAGE,null,provs, provs[0]);
-        
-        ArrayList<String> ing = new ArrayList();
-        rs=stmt.executeQuery("select cod_ing from Ingrediente where cod_ing in "
-                           + "(select cod_ing from provee where dni_prov = '"+prov+"')");
-        while ( rs.next() ){
-            ing.add( rs.getString(1) );
-        }
-        
-        Asignaciones ei = new Asignaciones(ing, prov, stmt, 6);
-        ei.setVisible(true);
     }
 }

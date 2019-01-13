@@ -25,13 +25,68 @@ public class GestionMenu {
         this.rs = rs;
     }
 
-    public void aniadirPlato(PomodoroGUI pomGUI) {
-        String db = "";
+    public void insertarPlato(PomodoroGUI pomGUI) {
+        String consulta;
         try {
-            db = pomDB.insertarTabla("Plato");
-            JOptionPane.showMessageDialog(pomGUI, db);
+            consulta = pomDB.insertarTabla("Plato");
+            JOptionPane.showMessageDialog(pomGUI, consulta);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(pomGUI, "Error al añadir un plato");
+            JOptionPane.showMessageDialog(pomGUI, "Error al añadir el plato");
+        }
+    }
+    
+    public void eliminarPlato(PomodoroGUI pomGUI) {
+        String consulta;
+        
+        try {
+            consulta = pomDB.eliminarTabla("Plato");
+            JOptionPane.showMessageDialog(pomGUI, consulta);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(pomGUI, "Error al eliminar el plato");
+        }
+    }
+    
+    public void modificarPlato(PomodoroGUI pomGUI) {
+        String consulta;
+        
+        try {
+            consulta = pomDB.modificarTabla("Plato");
+            JOptionPane.showMessageDialog(pomGUI, consulta);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(pomGUI, "Error al modificar el plato");
+        }
+    }
+    
+    public void insertarMenu(PomodoroGUI pomGUI) {
+        String consulta;
+        
+        try {
+            consulta = pomDB.insertarTabla("Menu");
+            JOptionPane.showMessageDialog(pomGUI, consulta);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(pomGUI, "Error al insertar el menu");
+        }
+    }
+    
+    public void eliminarMenu(PomodoroGUI pomGUI) {
+        String consulta;
+        
+        try {
+            consulta = pomDB.eliminarTabla("Menu");
+            JOptionPane.showMessageDialog(pomGUI, consulta);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(pomGUI, "Error al eliminar el menu");
+        }
+    }
+    
+    public void modificarMenu(PomodoroGUI pomGUI) {
+        String consulta;
+        
+        try {
+            consulta = pomDB.modificarTabla("Menu");
+            JOptionPane.showMessageDialog(pomGUI, consulta);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(pomGUI, "Error al modificar el menu");
         }
     }
     
@@ -47,6 +102,10 @@ public class GestionMenu {
         menus = menusList.toArray(menus);
         menu = (String) JOptionPane.showInputDialog(null,"Selecciona un menú", "Menús",
                                             JOptionPane.QUESTION_MESSAGE,null,menus, menus[0]);
+        
+        if (menu == null) {
+            return;
+        }
         
         ArrayList<String> platos = new ArrayList();
         rs=stmt.executeQuery("select cod_plato from Plato where disponibilidad = 'SI' and cod_plato not in "
@@ -71,6 +130,10 @@ public class GestionMenu {
         menu = (String) JOptionPane.showInputDialog(null,"Selecciona un menú", "Menús",
                                             JOptionPane.QUESTION_MESSAGE,null,menus, menus[0]);
         
+        if (menu == null) {
+            return;
+        }
+        
         ArrayList<String> platos = new ArrayList();
         rs=stmt.executeQuery("select cod_plato from Plato where disponibilidad = 'SI' and cod_plato in "
                            + "(select cod_plato from menu_contiene_plato where id_menu = '"+menu+"')");
@@ -85,7 +148,7 @@ public class GestionMenu {
         String valores = "", salida = "", plato = "";
         
         ArrayList<String> platosList = new ArrayList();
-        rs=stmt.executeQuery("select cod_plato from Plato where disponibilidad = 'SI'");
+        rs=stmt.executeQuery("select cod_plato from Plato");
         while ( rs.next() ){
             platosList.add( rs.getString(1) );
         }
@@ -93,6 +156,10 @@ public class GestionMenu {
         platos = platosList.toArray(platos);
         plato = (String) JOptionPane.showInputDialog(null,"Selecciona un plato", "Platos",
                                             JOptionPane.QUESTION_MESSAGE,null,platos, platos[0]);
+        
+        if (plato == null) {
+            return;
+        }
         
         ArrayList<String> ing = new ArrayList();
         rs=stmt.executeQuery("select cod_ing from Ingrediente where cod_ing not in "
@@ -109,7 +176,7 @@ public class GestionMenu {
         String valores = "", salida = "", plato = "";
         
         ArrayList<String> platosList = new ArrayList();
-        rs=stmt.executeQuery("select cod_plato from Plato where disponibilidad = 'SI'");
+        rs=stmt.executeQuery("select cod_plato from Plato");
         while ( rs.next() ){
             platosList.add( rs.getString(1) );
         }
@@ -117,6 +184,10 @@ public class GestionMenu {
         platos = platosList.toArray(platos);
         plato = (String) JOptionPane.showInputDialog(null,"Selecciona un plato", "Platos",
                                             JOptionPane.QUESTION_MESSAGE,null,platos, platos[0]);
+        
+        if (plato == null) {
+            return;
+        }
         
         ArrayList<String> ing = new ArrayList();
         rs=stmt.executeQuery("select cod_ing from Ingrediente where cod_ing in "
